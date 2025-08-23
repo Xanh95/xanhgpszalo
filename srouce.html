@@ -1,0 +1,3159 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Tất Cả Xe</title>
+    
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <script src="https://cdn.quanlyxe.vn/language/quanlyxe.min.js?2025081414" type="text/javascript"></script>
+    <link href="https://cdn.quanlyxe.vn/v2/Scripts/styles/Site.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.quanlyxe.vn/v2/Scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="https://cdn.quanlyxe.vn/v2/Scripts/jquery-migrate-3.0.0.js" type="text/javascript"></script>
+    <script src="https://cdn.quanlyxe.vn/v2/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <link href="https://cdn.quanlyxe.vn/v2/Content/font-awesome-5.3.1/css/all.min.css" ) rel="stylesheet" type="text/css" />
+    <link href="https://cdn.quanlyxe.vn/v2/Content/themes/default/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.quanlyxe.vn/v2/Scripts/static/bootstrap-menu/jquery.smartmenus.bootstrap.css" />
+    <script src="https://cdn.quanlyxe.vn/v2/Scripts/static/bootstrap-menu/jquery.smartmenus.js"></script>
+    <script src="https://cdn.quanlyxe.vn/v2/Scripts/static/bootstrap-menu/jquery.smartmenus.bootstrap.js"></script>
+    <link href="https://cdn.quanlyxe.vn/v2/Content/bootstrap/css/animate.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Content/bootstrap/js/bootstrap-notify.min.js?"></script>
+    <script src="https://cdn.quanlyxe.vn/v2/Scripts/static/jquery-ui-1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://cdn.quanlyxe.vn/v2/Scripts/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+    <link href="https://cdn.quanlyxe.vn/v2/Content/flick/jquery-ui-1.8.20.custom.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.quanlyxe.vn/v2/Scripts/styles/Platform.css?2025081414" rel="stylesheet" type="text/css" />
+    
+    <link rel="stylesheet" href="https://cdn.quanlyxe.vn/v2/Scripts/static/ol6/ol.min.css" type="text/css" />
+<link rel="stylesheet" href="https://cdn.quanlyxe.vn/v2/Scripts/static/ol6/ol-ext.min.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/static/ol6/ol.min.js"></script>
+<script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/static/ol6/ol-ext.min.js"></script>
+
+       <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="~/scripts/html5shiv.js"></script>
+    <![endif]-->
+
+    
+    <script type="text/javascript">
+        var Url = {
+            get: function(endpoint) {
+                var baseUrl = window.location.origin;
+                return baseUrl + '/' + endpoint;
+            },
+            cdn: function (endpoint) {
+                return `https://cdn.quanlyxe.vn/v2//${endpoint}`;
+            }
+        };
+    </script>   
+
+    <link href="https://cdn.quanlyxe.vn/v2/Scripts/static/jquery-easyui/easyui.css?2025081414" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/static/jquery-easyui/jquery.easyui.min.js"></script>
+    <script src="https://cdn.quanlyxe.vn/v2/Scripts/js/script.min.js?2025081414" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/js/module/map.min.js?2025081414"></script>
+    
+    <style>
+        .map-content {
+            background-color: white;
+            position: relative;
+        }
+    </style>
+    
+    <link href="https://cdn.quanlyxe.vn/v2/Scripts/static/bootoast/bootoast.min.css?2025081414" rel="stylesheet" type="text/css" />
+    <style>
+        .video-panel {
+            position: absolute;
+            z-index: 1012;
+            background-color: #c1c1c1;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            padding: 5px;
+        }
+
+        .tile-camera {
+            text-align: center;
+            font-size: 10em;
+            font-weight: bold
+        }
+
+        .sensor-offline {
+            color: red;
+        }
+
+        .mdvr-photos {
+            max-height: 480px;
+            overflow: auto;
+            padding: 5px 10px;
+            margin: 0 auto;
+        }
+
+        .photos {
+            overflow: auto;
+        }
+
+            .photos img {
+                max-width: 560px;
+                padding: 5px 0px 5px 5px;
+            }
+
+        .prev {
+            margin: 0 auto;
+            left: 45%;
+            position: absolute;
+            color: white;
+            padding: 5px;
+            bottom: 5px;
+            cursor: pointer;
+        }
+
+        .next {
+            right: 280px;
+            position: absolute;
+            color: white;
+            padding: 5px;
+            bottom: 5px;
+            cursor: pointer;
+        }
+
+        .loadPhoto {
+            position: absolute;
+            margin: 0 auto;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+        }
+
+        .channel {
+            position: relative;
+        }
+
+            .channel span {
+                left: 5px;
+                position: absolute;
+                background-color: blanchedalmond;
+                bottom: 5px;
+            }
+
+        .icon img {
+            width: 24px;
+        }
+
+        .ol-zoom {
+            top: 2em;
+        }
+
+        ol-zoom .ol-zoom-out {
+            margin-top: 204px;
+        }
+
+        .ol-zoomslider {
+            top: 6.5em;
+        }
+
+        .ol-touch .ol-zoom .ol-zoom-out {
+            margin-top: 212px;
+        }
+
+        .ol-touch .ol-zoomslider {
+            top: 2.75em;
+        }
+
+        .ol-zoom-in.ol-has-tooltip:hover [role=tooltip],
+        .ol-zoom-in.ol-has-tooltip:focus [role=tooltip] {
+            top: 3px;
+        }
+
+        .ol-zoom-out.ol-has-tooltip:hover [role=tooltip],
+        .ol-zoom-out.ol-has-tooltip:focus [role=tooltip] {
+            top: 232px;
+        }
+
+        .ol-control.ol-bar.ol-top.ol-right {
+            top: 2.5em;
+        }
+
+        .ol-control button {
+            background-color: #2980b9;
+        }
+
+        .ol-popup {
+            border-radius: 5px;
+            user-select: text;
+        }
+
+        .vehicle-cluster td img {
+            width: 32px;
+        }
+
+        .status-vehicle {
+            padding: 0 !important;
+            left: 20px !important;
+        }
+
+            .status-vehicle img {
+                width: 24px;
+            }
+
+        .collapse-layers {
+            display: none !important;
+        }
+
+        .ol-layerswitcher .layerswitcher-opacity {
+            display: none !important;
+        }
+
+        .ol-layerswitcher-buttons {
+            display: none !important;
+        }
+
+        #map .popup-info * {
+            font-size: 1.4vh !important;
+        }
+
+        .btnHideShow > i {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+        }
+
+        .right2 {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+
+        .left {
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+        }
+
+        .up {
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+        }
+
+        .down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        fieldset {
+            border: 1px solid rgb(192, 192, 192);
+            display: block;
+            padding-block-start: 0.35em;
+            padding-inline-start: 0.75em;
+            padding-inline-end: 0.75em;
+            min-inline-size: min-content;
+            border-color: rgb(192, 192, 192);
+            border-image: initial;
+            border-radius: 5px;
+            padding-block-end: 0.625em;
+        }
+
+        legend {
+            display: block;
+            width: auto;
+            padding-inline-start: 2px;
+            padding-inline-end: 0px !important;
+            border-width: initial;
+            border-style: none;
+            border-color: initial;
+            border-image: initial;
+            font-size: 12px !important;
+            margin-bottom: 0px;
+        }
+
+        .viewInfo > tbody > tr {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .tdpl {
+            padding-left: 4px;
+        }
+    </style>
+
+    <script>
+        var userId = '62488';
+        var VMLANGUAGE = 'vi';
+        $(document).ready(function () {
+            $(window).resize(function () { FixMapContent(); });
+            FixMapContent();
+            if (window.documentReadyCallback) { window.documentReadyCallback(); }
+        });
+        function FixMapContent() {
+            var h = 80;
+            var width = $(window).width();
+            if (width < 992) {
+                h = 45;
+            }
+            var height = $(window).height() - h;
+            if (height < 500) { height = 500; }
+            $(".map-content").css('height', height + 'px');
+            if (window.documentResizeCallback) { window.documentResizeCallback(); }
+        }
+    </script>
+    
+    <script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/static/splitter/jquery.splitter.js?"></script>
+    <script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/js/tableHeadFixer.min.js?"></script>
+    <link href="https://cdn.quanlyxe.vn/v2/Scripts/static/splitter/jquery.splitter.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/static/ContextMenu/jquery.ui.position.js?"></script>
+    <link rel="stylesheet" href="https://cdn.quanlyxe.vn/v2/Scripts/static/ContextMenu/jquery.contextMenu.min.css?" type="text/css" />
+    <script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/static/ContextMenu/jquery.contextMenu.min.js?"></script>
+    <script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/static/echarts/echarts.min.js?2025081414" ></script>
+    <script src="https://cdn.quanlyxe.vn/v2/Scripts/bundle/static/accounting.min.js" type="text/javascript"></script>
+    <script src="https://cdn.quanlyxe.vn/v2/Scripts/static/bootoast/bootoast.min.js"></script>
+
+    <!--minifier-->
+<script src="https://cdn.quanlyxe.vn/v2/Scripts/jquery.ui.timepicker.vi.js?" type="text/javascript"></script>
+    <script>
+        function getUserReportTime() { return '2024/01/01'; }
+        function getUserWaypointTime() { return '2024/01/01'; }
+    </script>
+
+<script src="https://cdn.quanlyxe.vn/v2/Scripts/static/datetimepicker/jquery.datetimepicker.full.min.js?" type="text/javascript"></script>
+<link href="https://cdn.quanlyxe.vn/v2/Scripts/static/datetimepicker/jquery.datetimepicker.min.css?" rel="stylesheet" />
+    <!--minifier-->
+<link rel="stylesheet" href="https://cdn.quanlyxe.vn/v2/Scripts/static/select2/css/select2.min.css"/>
+<script src="https://cdn.quanlyxe.vn/v2/Scripts/static/select2/js/select2.full.min.js"></script>
+<script src="https://cdn.quanlyxe.vn/v2/Scripts/static/select2/js/i18n/vi.js"></script>
+            <link href="https://cdn.quanlyxe.vn/v2/Scripts/styles/module/monitor.min.css?2025081414" rel="stylesheet" type="text/css" />
+            <script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/js/module/v2/monitor.min.js?2025081414"></script>
+            <script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/js/report.govmtTrip.min.js?2025081414" type="text/javascript"></script>
+
+        <script>window.writeDriverCard = true;</script>
+                    <script>window.createRemark = true;</script>
+            <script>window.writePlateToImage = true;</script>
+            <script>window.createVehicleLoginCode = true;</script>
+<script>
+
+                var displayBillingExpired=false;
+                var showHistoryImage=false;
+
+        var hooterPermission = 'False';
+        var urlRefresh = '/Monitor.aspx/RefreshVehicle';
+        var urlVehiclePlate = 'http://plates.quanlyxe.vn/Monitor/GetPlateImage?plate=';
+        var urlSTATIONIMAGEURL = 'http://plates.quanlyxe.vn/Monitor/GetStationImage?name=';
+        var urlVehicleStatus = 'https://cdn.quanlyxe.vn/v2/Content/images/vec/';
+        var POI_UPDATE_MODULE = 0;
+        var VEHICLE_HISTORY_MODULE = 0;
+        var HISTORY_REPLAY_LINK = "/History.aspx";
+        var HISTORY_IMAGE_REPLAY_LINK = "/History.aspx/HistoryImage";
+        var keyTemperature = 'Nhiệt Độ';
+        var keyHumidity = 'Độ Ẩm';
+        var keyFuel = 'Xăng Dầu';
+        var keySetpoint = 'Nhiệt độ Setpoint';
+        var phoneUser = '2';
+        var vehicleGroupName = 'Nhóm Xe';
+        let govFleetMonitorUrl = '/Monitor.aspx/GetFleetPacketTransmittedByAsync';
+        var keyPlate = 'Biển Kiểm So&#225;t';
+        var keyDriver = 'T&#224;i Xế';
+        var keyLicense = 'Số GPLX';
+        var keyPhoneNumber = 'Số ĐT';
+        var key4h = 'LX Li&#234;n Tục';
+        var key10h = 'LX Trong Ng&#224;y';
+        var key48h = 'LX Trong Tuần';
+        var keyDrivingTime = 'Thời Gian L&#225;i Xe';
+        var actionTripAsync = "/QCVN31Report.aspx/GetVehicleTripReportJSONByAsync";
+        var actionTripPartial = "/QCVN31Report.aspx/GetVehicleTripReportJSONByPartial";
+        var updateRegistration = '/Vehicle.aspx/UpdateRegisterVehicle'
+
+        let interval = null;
+        let monitorQueue = [];
+
+        function getSensorValues(vehicleStatus, sensorDatas) {
+            if (!sensorDatas || sensorDatas.length === 0) return "";
+
+            let sensorHtml = "";
+
+            sensorDatas.forEach(sensor => {
+                const delta = Math.max(window.todayTime, vehicleStatus[1])  - sensor[1];
+                const sensorStatusClass = delta > 600 ? 'sensor-offline' : 'sensor-online';
+                const [sensorType, time, total, ...keyValuePairs] = sensor;
+
+                if (total) {
+                    sensorHtml += `<tr style="border-top:1px solid #f1f1f1;">
+                <td><b>${getLanguage("SENSOR.total")}: </b></td>
+                <td>${total}</td><td></td><td></td>
+            </tr>`;
+                }
+
+                for (let i = 0; i < keyValuePairs.length; i += 2) {
+                    const key = keyValuePairs[i];
+                    const value = keyValuePairs[i + 1];
+                    const sensorName = key
+                        ? getLanguage(key)
+                        : getSensorNameByVehicle(vehicleStatus[0] ,sensorType);
+
+                    sensorHtml += `<tr class="${sensorStatusClass}">
+                <td><b>${sensorName}: </b></td>
+                <td>${value}</td>
+                ${time ? `<td rowspan="1"><b>${getLanguage("gpstime")}: </b></td><td rowspan="1">${formatDateTime(getTime(time))}</td>` : ""}
+            </tr>`;
+                }
+            });
+
+            return sensorHtml;
+        }
+
+        function getContainerSensorValues(status, data) {
+            var sensor = '';
+            var sensorTypeId = data.SensorTypeId;
+            if (sensorTypeId > 0) {
+                var delta = status[1] - data.GpsTime;
+
+                //dual temperature sensor
+                if (sensorTypeId == 18 || sensorTypeId == 34 || sensorTypeId == 35) {
+                    if (data.Data) {
+                        var values = JSON.parse(data.Data);
+                        if (values) {
+                            sensor += '<tr class="' + (delta > 600 ? 'sensor-offline' : 'sensor-online') +'"><td><b>Nhiệt độ Return: </b></td><td>' + suffixValue(values.T1, 'c') +
+                                '</td><td rowspan="2"><b>Ng&#224;y/Giờ: </b></td><td rowspan="2">' +
+                                formatDateTime(getTime(data.GpsTime)) +
+                                '</td></tr>';
+                            sensor += '<tr><td><b>Nhiệt độ Supply: </b></td><td>' + suffixValue(values.T2, 'c') + '</td></tr>';
+
+                            sensor += '<tr class="' + (delta > 600 ? 'sensor-offline' : 'sensor-online') + '"><td norwap><b>' + getContainerSensorName(status, data.SensorTypeId) + ': </b></td><td>' + values.T3 / 100 + '°C</td><td><b>Ng&#224;y/Giờ: </b></td><td>' + formatDateTime(getTime(data.GpsTime)) + '</td></tr>';
+                        }
+                    }
+                }
+
+            }
+            return sensor;
+        }
+        function getSensorInfoByStatus(status, sensorMask = 0) {
+            var str = '';
+            if ((status & 1) > 0) { //bit 0: acc
+                str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-green.png" />&nbsp;<span>Nguồn Mở</span>&nbsp;&nbsp;';
+            }
+            else {
+                str += '<div style="width:7px;height:7px;margin-top:6px;float:left;background-color:grey;"></div>&nbsp;<span>Nguồn Tắt</span>&nbsp;&nbsp;';
+            }
+
+            if (sensorMask & 2) {
+                if ((status & 2) > 0) { //bit 1: door
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-red.png" />&nbsp;<span>Cửa Mở</span>&nbsp;&nbsp;';
+                } else {
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-red.png" />&nbsp;<span>Cửa Tắt</span>&nbsp;&nbsp;';
+                }
+            }
+
+            if (sensorMask & 4) {
+                if ((status & 4) > 0) { //bit 2: air conditioner
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-blue.png" />&nbsp;<span>M&#225;y Lạnh Mở</span>&nbsp;&nbsp;';
+                } else {
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-blue.png" />&nbsp;<span>M&#225;y Lạnh Tắt</span>&nbsp;&nbsp;';
+                }
+            }  
+            
+            if (sensorMask & 8) {
+                if ((status & 8) > 0) { //bit 3: passenger
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-blue.png" />&nbsp;<span>C&#243; kh&#225;ch </span>&nbsp;&nbsp;';
+                } else {
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-blue.png" />&nbsp;<span>C&#243; kh&#225;ch Tắt </span>&nbsp;&nbsp;';
+                }
+            }
+            
+            if (sensorMask & 16) {
+                if ((status & 16) > 0) { //bit 4: SOS
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-warning.gif" />&nbsp;<span>Cảnh B&#225;o</span>';
+                } else {
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-warning.gif" />&nbsp;<span>Cảnh B&#225;o Tắt </span>';
+                }
+            }
+
+            if (sensorMask & 256) {
+                if ((status & 256) > 0) { //bit 8: mixing sensor
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-blue.png" />&nbsp;<span>Trộn</span>&nbsp;&nbsp;';
+                } else {
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-blue.png" />&nbsp;<span>Trộn Tắt </span>&nbsp;&nbsp;';
+                }
+            }
+
+            if (sensorMask & 512) {
+                if ((status & 512) > 0) { //bit 9: pumping sensor
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-red.png" />&nbsp;<span>Xả</span>&nbsp;&nbsp;';
+                } else {
+                    str += '<img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-red.png" />&nbsp;<span>Xả Tắt </span>&nbsp;&nbsp;';
+                }
+            }
+               
+            return str;
+        }
+        function showInputOutputInfo(input, output) {
+            var info = '<div class="inotputinfo" >';
+            if ((input & 1) > 0)
+                info += '<span class="input-on"></span>';
+            else
+                info += '<span class="input-off"></span>';
+            if ((input & 2) > 0)
+                info += '<span class="input-on"></span>';
+            else
+                info += '<span class="input-off"></span>';
+            if ((input & 4) > 0)
+                info += '<span class="input-on"></span>';
+            else
+                info += '<span class="input-off"></span>';
+            if ((input & 8) > 0)
+                info += '<span class="input-on"></span>';
+            else
+                info += '<span class="input-off"></span>';
+            info += '</div>';
+            var info2 = '<span style="float:left;margin: 0 5px;">/</span><div class="inotputinfo" >';
+            if ((output & 1) > 0)
+                info2 += '<span class="input-on"></span>';
+            else
+                info2 += '<span class="input-off"></span>';
+            if ((output & 2) > 0)
+                info2 += '<span class="input-on"></span>';
+            else
+                info2 += '<span class="input-off"></span>';
+            if ((output & 4) > 0)
+                info2 += '<span class="input-on"></span>';
+            else
+                info2 += '<span class="input-off"></span>';
+            if ((output & 8) > 0)
+                info2 += '<span class="input-on"></span>';
+            else
+                info2 += '<span class="input-off"></span>';
+            info2 += '</div>';
+            return info + info2;
+        }
+
+    const DoorText = {
+        "00": 'Cửa mở',
+        "01": 'Cửa kh&#233;p hờ',
+        "11": 'Cửa đ&#243;ng k&#237;n',
+        "10": 'Unknow'
+    }
+    const PIRText = {
+        "1":'C&#243; người',
+        "0":'Kh&#244;ng c&#243; người'
+    }
+    const typeSensors = ["T", "D", "H", "P"];
+    function showDataSensor(data) {
+        var json = JSON.parse(data[27][0]["Data"]);
+        var time = data[27][0]["GpsTime"];
+        var result = '';
+        if (json) {
+            var newJson = [];
+            for (key in json) {
+                newJson.push({ name: key, value: json[key] });
+            }
+            typeSensors.forEach((element) => {
+                let output = newJson.filter((obj) => obj.name.slice(0, 1) === element);
+                if (output.length > 0) {
+                    result += addSensorHtml(element, output,time);
+                }
+            }
+            );
+        }
+        return result;
+    }
+
+    function addInforSensor(key, data) {
+        var result = "";
+        if (data) {
+            switch(key) {
+                case "T":
+                    for (var i = 0; i < data.length; i++) {
+                        result += '<td class="tdpl"><b>' + (data[i]["value"]["Text"] == "" ? data[i]["name"] : data[i]["value"]["Text"]) + '</b>: ' + data[i]["value"]["Value"] + '°C</td>';
+                    }
+                    break;
+                case "D":
+                    for (var i = 0; i < data.length; i++) {
+                        result += '<td class="tdpl"><b>' + (data[i]["value"]["Text"] == "" ? data[i]["name"] : data[i]["value"]["Text"] )  + '</b>: ' + DoorText[data[i]["value"]["Value"]] + '</td>';
+                    }
+                    break;
+
+                case "H":
+                    for (var i = 0; i < data.length; i++) {
+                        result += '<td class="tdpl"><b>' + (data[i]["value"]["Text"] == "" ? data[i]["name"] : data[i]["value"]["Text"]) +'</b>: ' + data[i]["value"]["Value"] + ' %</td>';
+                    }
+                    break;
+
+                case "P":
+                    for (var i = 0; i < data.length; i++) {
+                        result += '<td class="tdpl"><b>' + (data[i]["value"]["Text"] == "" ? data[i]["name"] : data[i]["value"]["Text"]) +'</b>: ' + PIRText[data[i]["value"]["Value"]] + '</td>';
+                    }
+                    break;
+
+                default:
+            }
+        }
+        return result;
+
+    }
+
+    function addSensorHtml(key, data,time) { /// time?
+        var result = '';
+        var timeConvert = Util.date.formatFullDateTime(getTime(time));
+        switch (key) {
+            case "T":
+                result =
+                    '<tr>' +
+                    '<td colspan="2">' +
+                    '<fieldset>' +
+                '<legend>Nhiệt Độ - <span class="daterpt" style="font-weight:100;">' + timeConvert +'</span></legend>' +
+                    '<div style="width:100%">' +
+                    '<table class="viewInfo" style="width:100%;">' +
+                    '<tr>'+
+                    addInforSensor(key,data) +
+                    '</tr>'+
+                    '</table>' +
+                    '</div>' +
+                    '</fieldset>' +
+                    '</td>' +
+                    '</tr>';
+                break;
+            case "D":
+                result =
+                     '<tr>' +
+                     '<td colspan="2"> ' +
+                     '<fieldset>' +
+                '<legend> - <span class="daterpt" style="font-weight:100;">' + timeConvert+'</span></legend>' +
+                     '<div style="width:100%">' +
+                     '<table style="width:100%;">' +
+                     '<tr>' +
+                     addInforSensor(key,data) +
+                     '</tr>' +
+                     '</table>' +
+                     '</div>' +
+                     '</fieldset>' +
+                     '</td>' +
+                     '</tr>';
+                break;
+            case "H":
+                result =
+                    '<td>' +
+                    '<fieldset>' +
+                '<legend>Độ Ẩm - <span class="daterpt" style="font-weight:100;">' + timeConvert + '</span> </legend>' +
+                    '<div style="width:100%">' +
+                    '<table style="width:100%;">' +
+                    '<tr>' +
+                    addInforSensor(key, data) +
+                    '</tr>' +
+                    '</table>' +
+                    '</div>' +
+
+                    '</fieldset>' +
+                    '</td>';
+                break;
+            case "P":
+                result =
+                    '<td>' +
+                    '<fieldset>' +
+                '<legend>PIR - <span class="daterpt" style="font-weight:100;"> ' + timeConvert + '</span></legend>' +
+                    '<div style="width:100%">' +
+                    '<table style="width:100%;">' +
+                    '<tr>' +
+                    addInforSensor(key, data) +
+                    '</tr>' +
+                    '</table>' +
+                    '</div>' +
+                    '</fieldset>' +
+                    '</td>';
+                break;
+        }
+        return result;
+    }
+
+    function universalSensor(data, vehicleInfo) {
+            if (data == null)
+                return '';
+            var location = data[7] + ' ' + getRegion(data[34]);
+            if (location.toLowerCase().indexOf('[dk]') > 0) {
+                location = location.substring(0, location.toLowerCase().indexOf('[dk]'));
+        }
+
+        var defaultWarning = '<div style="width:7px;height:7px;margin-top:6px;background-color:grey;"></div>&nbsp;&nbsp;<span>Cảnh B&#225;o</span>';
+        var off = '<div style="width:7px;height:7px;margin-top:6px;float:left;background-color:grey;"></div>&nbsp;<span>Nguồn Tắt</span>&nbsp;&nbsp;';
+        var result = '<table class="popup-info" width="100%" >' +
+                '<tr>' +
+                '<t> <b> Xe:</b> <span class="vehicle_plate">' + vehicleInfo[1] + '</span>(' + data[4] / 100 + ' Km/h) ' +
+               '<td colSpan="4">' + '<div style="display: flex; flex-wrap: nowrap; align-items: center;">' + getSensorInfoByStatus(data[8], data?.[77]) +
+                (data[68] == "1" ? ('<div id="hooter-status-1" ><img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-green.png" />&nbsp;<span>C&#242;i Mở</span>&nbsp;&nbsp;</div>') : "") +
+                (data[68] == "0"? ('<div id="hooter-status-0"><img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-red.png" />&nbsp;<span>C&#242;i Tắt</span>&nbsp;&nbsp;</div>') : "") + ' </div> </td>' + 
+                '</tr>' +
+                '<tr>' +
+                '<td style="display: flex;">' +
+                '<b>Input/Output:&nbsp; </b>'+ showInputOutputInfo(data[11], data[12])+
+                '</td>' +
+                '<td>' +
+                '<b>Input1: </b>' + data[13] / 100 + '(V), <b>Input2: </b>' + data[14] / 100+ '(V)'+
+                '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<td>' +
+                '<b  style="white-space:nowrap;">Thời Gian: </b>' + Util.date.formatFullDateTime(getTime(data[1]))+
+                '</td> ' +
+                '<td> ' +
+                '<b>Km: </b > ' + data[10] / 100 + ' Km' +
+                '</td> ' +
+                '</tr>' +
+                '<tr>' +
+                '<td>' +
+                '<b>Loại xe: </b>' + getVehicleTypeName(vehicleInfo)+
+                '</td>' +
+                '<td>' +
+                '<b>Số Chỗ/Trọng Tải Xe: </b>' + formatString(vehicleInfo[5])+
+                '</td>' +
+                '</tr>' +
+
+                '<tr>' +
+                '<td>' +
+                '<b>Số ĐT: </b>' + (vehicleInfo[9] == null ? '' : vehicleInfo[9])+
+                '</td>' +
+                '<td>' +
+                '<b>' + ((data.Status & 1) > 0 ? 'Dừng xe' : 'Đỗ xe') +  ': </b>'+  (data[15] > 0 ? (Util.date.formatTimeFromSeconds(data[1] - data[15])) : 0) +
+                '</td>' +
+                '</tr>' +
+
+                '<tr>' +
+                '<td>' +
+                '<b>T&#224;i Xế: </b>' + getDriverName(data)+
+                '</td>' +
+                '<td>' +
+                '<b>Số ĐT TXế: </b> <span> ' + getDriverPhone(data)+'</span>' +
+                '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<td>' +
+                '<b>Số GPLX: </b>' + getDriverLicenseNo(data)+
+                '</td>' +
+                '<td>' +
+                '<b>Ng&#224;y Hết Hạn: </b> <span>' + getDriverLicenseExpireDate(data)+'</span>' +
+                '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<td colspan="2"><b>Vị Tr&#237; :</b>' +location+'</td>' +
+                '</tr>' +
+                showDataSensor(data) +
+                '<tr>' +
+                '<td><b class="text-success" style="font-size:15px;">QCVN06</b></td>' +
+                '<td style="text-align:right;">' +
+                '<button onclick="hideshowpopup(this)" class="btnHideShow" style="cursor:pointer;margin-top:4px;margin-bottom:4px;"><i style="margin: 1px;" class="up"></i></button>' +
+                '</td>' +
+                '</tr> ' +
+                '<tr> ' +
+                '<td colspan = "2" > ' +
+                '<div class="show" name = "info" style = "border-radius:5px;border: 1px solid rgb(192, 192, 192);width:100%; height: 20px;" > </div> ' +
+                '<div class="hide" name = "info"  style = "border-radius:5px; border: 1px solid rgb(192, 192, 192);padding:10px;"  > ' +
+                '<table style = "width:100%;padding:8px;" > ' +
+                ' <tr> ' +
+                '<td><b> Sở GTVT:</b> ' + window['CITY_NAME'] +'</td > <td><b>V.tốc cho ph&#233;p (km/h):</b> ' + getVehicleMaxSpeed(data) / 100 + 'km/h </td>' +
+                '</tr> ' +
+                '<tr> ' +
+                '<td><b>LX Li&#234;n Tục: </b>' + Util.date.formatTimeFromSeconds(data[16]) + '</td > <td><b>LX Trong Ng&#224;y:</b>  ' + Util.date.formatTimeFromSeconds(data[17]) + '</td>' +
+                '</tr> ' +
+                '<tr> ' +
+                '<td><b>Dừng/đỗ: </b>' + data[22] + '/' + data[21] + '</td > <td><b>Đ&#243;ng/Mở Cửa:</b> ' + data[19] + '/' + data[18] + ' </td>' +
+                ' </tr> ' +
+                '<tr> ' +
+                '<td><b> Qu&#225; Tốc/Ng&#224;y:</b> ' + data[29] + '</td > <td><b>Vin:</b>' + formatString(vehicleInfo[4]) + ' </td>' +
+                '</tr> ' +
+                ' <tr> ' +
+                ' <td> <b>Thắng Gấp/Tăng Tốc:</b> ' + data[40] + '/' + data[41] + '</td > <td><b>Định Mức Nhi&#234;n Liệu:</b> ' + suffixValue(data[45], 'l', false) + '</td>' +
+                ' </tr> ' +
+                '<tr> ' +
+                '<td><b> Số Lần SOS:</b> ' + data[43] + '</td > <td><b>Lượng Ph&#225;t Thải Kh&#237; CO2:</b> ' + suffixValue(data[44], 'l', false) + '</td>' +
+                '</tr> ' +
+                '</table> ' +
+                '</div> ' +
+                '</td> ' +
+                '</tr> ' +
+                '<tr>' +
+            '<td colspan="4" align="right" class="pnlFuncs">' +
+                "<button onclick=\"monitorPacketTransmitted('" + data[32] + "' , '" + data[70] + "'," + data[71] + ");\" title=\"Kiểm tra dữ liệu truyền Cục CSGT\" id=\"btn_check_tcdb_"+ data[70] +"\">Cục CSGT</button>" +
+                (hooterPermission == "True" && data[68] == "0" ? "<button id='btn-setting-hooter-0' onclick=\"TurnOnOffHooter(" + data[0] + " , " + data[68] + ");\" title=\"Mở C&#242;i\" style='color:green;'><i class='fa fa-volume-up'></i></button>" : '') +
+                (hooterPermission == "True" && data[68] == "1" ? "<button id='btn-setting-hooter-1' onclick=\"TurnOnOffHooter(" + data[0] + " , " + data[68] + ");\" title=\"Tắt C&#242;i\" style='color:red;'><i class='fa fa-volume-mute'></i></button>" : '') +
+                "<button onclick=\"sendVehicleError(" + data[0] + ");\" title=\"Gửi B&#225;o Lỗi\" style='color:red;'><i class='fa fa-exclamation-triangle'></i></button>" +
+                "<button onclick=\"showEventTab();\" title=\"Sự Kiện\" /><i class='fa fa-terminal'></i></button>" +
+                "<button onclick=\"monitor(" + data[0] + ")\" title=\"Xem Tr&#234;n Bản Đồ\" /><i class='fa fa-desktop'></i></button>" +
+                "<button onclick=\"ShowMap(" + data[2] + ", " + data[3] + ")\" title=\"Xem Tr&#234;n Bản Đồ\" /><i class='fa fa-map-marker'></i></button>" +
+                (POI_UPDATE_MODULE ? ("<button onclick=\"AddPoint2(" + data[2] * 1e-6 + ", " + data[3] * 1e-6 + ")\" title=\"Th&#234;m Điểm\" /><i class='icon-google-maps'></i></button>") : "") +
+                "<button onclick=\"javascript:estimateDistance(" + data[0] + ")\" title=\"T&#237;nh Khoảng C&#225;ch\" /><i class='fa fa-road'></i></button>" +
+                "<button onclick=\"showHistory(" + data[0] + ")\" title=\"Xem Lại Lộ Tr&#236;nh\" /><i class='fa fa-clock'></i></button>" +
+                '</td>' +
+                '</tr>' +
+            '</table>';
+        return result;
+    }
+
+        
+        function getVehicleInfo(data, vehicleInfo) {
+            if (data == null)
+                return '';
+            var decree91 = '';
+            decree91 = '<tr><td colspan="4"><b class="text-success" style="font-size:15px;">QCVN06</b><div style="border: 1px solid #c1c1c1;border-radius: 5px;padding: 5px;">' +
+                '<table width="100%">' +
+                '<tr><td><b>Sở GTVT: </b>' + window['CITY_NAME'] +'</td><td><b>Số Chỗ/Trọng Tải Xe: </b>' + formatString(vehicleInfo[5]) + '</td></tr>' +
+                '<tr><td><b>Loại xe: </b>' + getVehicleTypeName(vehicleInfo) + '</td><td><b>V.tốc cho ph&#233;p (km/h): </b>' + getVehicleMaxSpeed(data) / 100 + '</td></tr>' +
+                '<tr><td><b>T&#224;i Xế: </b>' + getDriverName(data) + '</td><td><b>Số ĐT TXế: </b>' + getDriverPhone(data) + '</td></tr>' +
+                '<tr><td><b>Số GPLX</b>: ' + getDriverLicenseNo(data) + '</td>' +
+                `<td style="display:flex; gap: 8px; justify-content: space-between; align-items: center">
+                    <span>
+                        <b>LX Li&#234;n Tục</b>: ${Util.date.formatTimeFromSeconds(data[16])}
+                    </span>
+                    <i title="${getLanguage('drivingtime.viewchart')} ${getLanguage('monitor.popup.continiousdriving')}" onclick="showChartDrivingTime(${data[0]}, '4h')" class="fas fa-chart-bar" style="cursor: pointer; color: green; font-size: 14px!important"></i>
+                </td>` +
+                '<td></td></tr>' +
+                '<tr><td><b>Ng&#224;y Hết Hạn</b>: ' + getDriverLicenseExpireDate(data) + '</td>' +
+                `<td style="display:flex; gap: 8px; justify-content: space-between; align-items: center">
+                    <span>
+                        <b>LX Trong Ng&#224;y</b>: ${Util.date.formatTimeFromSeconds(data[17])}
+                    </span>
+                    <i title="${getLanguage('drivingtime.viewchart')} ${getLanguage('monitor.popup.drivingindate')}" onclick="showChartDrivingTime(${data[0]}, '10h')" class="fas fa-chart-bar" style="cursor: pointer; color: green; font-size: 14px!important"></i>
+                </td>` +'</tr>' +
+                '<tr><td><b>Dừng/đỗ</b>: ' + data[21] + '/' + data[22] + '</td>' +
+                `<td style="display:flex; gap: 8px; justify-content: space-between; align-items: center">
+                    <span>
+                        <b>LX Trong Tuần</b>: ${Util.date.formatTimeFromSeconds(data[69])}
+                    </span>
+                    <i title="${getLanguage('drivingtime.viewchart')} ${getLanguage('monitor.driving48h')}" onclick="showChartDrivingTime(${data[0]}, '48h')" class="fas fa-chart-bar" style="cursor: pointer; color: green; font-size: 14px!important"></i>
+                </td>` + '<td></td></tr>' +
+                '<tr><td><b>Qu&#225; Tốc/Ng&#224;y:</b> ' + data[29] + '</td><td><b>Đ&#243;ng/Mở Cửa</b>: ' + data[19] + '/' + data[18] + '</td></tr>' +
+                '<tr><td><b>Thắng Gấp/Tăng Tốc:</b> ' + data[40] + '/' + data[41] + '</td><td><b>Vin: </b>' + formatString(vehicleInfo[4]) + '</td></tr>' +
+                '<tr><td><b>Số Lần SOS:</b> ' + data[43] + '</td><td><b>Định Mức Nhi&#234;n Liệu: </b>' + suffixValue(data[45], 'l', false) + '</td></tr>' +
+                '</table></div></td></tr>';
+            var sensor = '';
+            var remark = data[66];
+            sensor += getSensorValues(data, data[76]);
+            var location = data[7] + ' ' + getRegion(data[34]);
+            if (location.toLowerCase().indexOf('[dk]') > 0) {
+                location = location.substring(0, location.toLowerCase().indexOf('[dk]'));
+          }//<span class="close-popup" onclick="removeCurrentPopup();"></span>
+
+            var isBlockViewingOfDrivingTime = 'False'
+        if (isBlockViewingOfDrivingTime === "True") {
+            decree91 = ''
+        }
+        let obdFlag = false;
+        switch (data[56]) {
+            case 56:
+            case 59:
+                obdFlag = true;
+                break;
+        }
+        if (obdFlag) {
+            decree91 = '<tr><td colspan="4">' + getOBJInfo(vehicleInfo[1], data) + '</td></tr>';
+        }
+
+          return '<table class="popup-info" width="100%">' +
+                '<tr>' +
+                '<td>' +
+                '<b>Xe:</b>' +
+                '</td>' +
+                '<td colspan="3">' +
+                '<span class="vehicle_plate">' + vehicleInfo[1] + '</span>(' + data[4] / 100 + ' Km/h)' +
+                '</td>' +
+                '</tr>' +
+
+                '<tr>' +
+                '<td>' +
+                '<b style="white-space:nowrap;">Thời Gian: </b>' +
+                '</td>' +
+                '<td>' + Util.date.formatFullDateTime(getTime(data[1])) + '</td>' +
+                '<td><b>Km: </b></td><td>' + data[10] / 100 + ' Km</td>' +
+                '</tr>' +
+                '<tr>' +
+              '<td colSpan="4">' + '<div style="display: flex; flex-wrap: nowrap; align-items: center;">' + getSensorInfoByStatus(data[8], data?.[77]) +
+                (data[68] == "1" ? ('<div id="hooter-status-1" ><img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-green.png" />&nbsp;<span>C&#242;i Mở</span>&nbsp;&nbsp;</div>') : "") +
+                (data[68] == "0"? ('<div id="hooter-status-0"><img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-red.png" />&nbsp;<span>C&#242;i Tắt</span>&nbsp;&nbsp;</div>') : "") + ' </div> </td>' + 
+                '</tr>' +
+                sensor +
+                //phuongdd - input/output
+                '<tr>' +
+                '<td><b>In/Output:</b>&nbsp;</td>' +
+                '<td>' + showInputOutputInfo(data[11], data[12]) + '</td>' +
+                '<td colspan="2"><b>Input1:</b> ' + data[13] / 100 + '(V), <b>Input2:</b> ' + data[14] / 100 + '(V)</td>' +
+                '</tr>' +
+
+                '<tr>' +
+                '<td style="vertical-align:top;"><b>Vị Tr&#237;: </b></td>' +
+                '<td colspan="3" align="left" style="word-wrap:break-word;">' + location + '</td>' +
+                '</tr>' +
+
+                (remark != null && remark.length > 0 ?
+                    '<tr id="_trRemark">' +
+                    '<td ><b>Ghi Ch&#250;: </b></td>' +
+                    '<td colspan="3" align="left" style="color:red; max-width: 350px" id="_remarkVehicle">' + remark + '</td>' +
+                    '</tr>' : '') +
+
+                '<tr>' +
+                '<td><b>Số ĐT:</b></td>' +
+                '<td>' + (vehicleInfo[9] == null ? '' : vehicleInfo[9]) + '</td>' +
+                (data[15] > 0 ?
+                    '<td><b>' + ((data.Status & 1) > 0 ? 'Dừng xe' : 'Đỗ xe') + ':</b></td>' +
+                    '<td>' + Util.date.formatTimeFromSeconds(data[1] - data[15]) + '</td>' : '') +
+                '</tr>' +
+
+                decree91 +
+                '<tr>' +
+              '<td colspan="4" align="right" class="pnlFuncs">' +
+              (obdFlag ? '<button onclick="showOBDDetail(\'' + data[0] + '\');"><b>OBD</b></button>' : '') +
+                "<button onclick=\"monitorPacketTransmitted('" + data[32] + "','" + data[70] + "'," + data[71] + ");\" title=\"Kiểm tra dữ liệu truyền Cục CSGT\" id=\"btn_check_tcdb_"+ data[70] +"\">Cục CSGT</button>" +
+                (hooterPermission == "True" && data[68] == "0" ? "<button id='btn-setting-hooter-0' onclick=\"TurnOnOffHooter(" + data[0] + " , " + data[68] + ");\" title=\"Mở C&#242;i\" style='color:green;'><i class='fa fa-volume-up'></i></button>" : '') +
+                (hooterPermission == "True" && data[68] == "1" ? "<button id='btn-setting-hooter-1' onclick=\"TurnOnOffHooter(" + data[0] + " , " + data[68] + ");\" title=\"Tắt C&#242;i\" style='color:red;'><i class='fa fa-volume-mute'></i></button>" : '') +
+                // "<button onclick=\"showDispatch(" + data[0] + ",'" + vehicleInfo[1] + "')\" title=\"Điều T&#224;i Xế\" /><i class='icon-user'></i></button>" +
+                "<button onclick=\"showEventTab();\" title=\"Sự Kiện\" /><i class='fa fa-terminal'></i></button>" +
+                // "<button onclick=\"showUpdateRemark(" + data[0] + ")\" title=\"Ghi Ch&#250;\" /><i class='icon-edit'></i></button>" +
+                "<button onclick=\"shareLocation('" + data[62] + "', 'Chia Sẻ Vị Tr&#237;')\" title=\"Chia Sẻ Vị Tr&#237;\" /><i class='fa fa-share-all'></i></button>" +
+                "<button onclick=\"monitor(" + data[0] + ")\" title=\"Xem Tr&#234;n Bản Đồ\" /><i class='fa fa-desktop'></i></button>" +
+                "<button onclick=\"ShowMap(" + data[2] + ", " + data[3] + ")\" title=\"Xem Tr&#234;n Bản Đồ\" /><i class='fa fa-map-marker'></i></button>" +
+                (POI_UPDATE_MODULE ? ("<button onclick=\"AddPoint2(" + data[2] * 1e-6 + ", " + data[3] * 1e-6 + ")\" title=\"Th&#234;m Điểm\" /><i class='icon-google-maps'></i></button>") : "") +
+                "<button onclick=\"javascript:estimateDistance(" + data[0] + ")\" title=\"T&#237;nh Khoảng C&#225;ch\" /><i class='fa fa-road'></i></button>" +
+                "<button onclick=\"showHistory(" + data[0] + ")\" title=\"Xem Lại Lộ Tr&#236;nh\" /><i class='fa fa-clock'></i></button>" +
+                '</td>' +
+                '</tr>' +
+              '</table>';
+        }
+
+
+        function getContainerInfo(data, vehicleInfo) {
+           if (data == null)
+                return '';
+            var decree91 = '';
+            var cName = data[59];
+            var cSerial = data[60];
+            var cId = data[61];
+            decree91 = '<tr><td colspan="4"><b class="text-success" style="font-size:15px;">QCVN06</b><div style="border: 1px solid #c1c1c1;border-radius: 5px;padding: 5px;">' +
+                '<table width="100%">' +
+                '<tr><td><b>Sở GTVT: </b>' + window['CITY_NAME'] +'</td><td><b>Số Chỗ/Trọng Tải Xe: </b>' + formatString(vehicleInfo[5]) + '</td></tr>' +
+                '<tr><td><b>Loại xe: </b>' + getVehicleTypeName(vehicleInfo) + '</td><td><b>V.tốc cho ph&#233;p (km/h): </b>' + getVehicleMaxSpeed(data) / 100 + '</td></tr>' +
+                '<tr><td><b>Container: </b>' + cName + '</td><td><b>Số ĐT TXế: </b>' + getDriverPhone(data) + '</td></tr>' +
+                '<tr><td><b>Model.AirConditioner</b>: ' + cId + '</td><td><b>Ng&#224;y Hết Hạn</b>: ' + getDriverLicenseExpireDate(data) + '</td><td></td></tr>' +
+                '<tr><td><b>Serial.AirConditioner</b>: ' + cSerial + '</td><td><b>LX Trong Ng&#224;y</b>: ' + Util.date.formatTimeFromSeconds(data[17]) + '</td></tr>' +
+                '<tr><td><b>Dừng/đỗ</b>: ' + data[21] + '/' + data[22] + '</td><td><b>Đ&#243;ng/Mở Cửa</b>: ' + data[19] + '/' + data[18] + '</td><td></td></tr>' +
+                '<tr><td><b>Qu&#225; Tốc/Ng&#224;y:</b> ' + data[29] + '</td><td><b>Vin: </b>' + formatString(vehicleInfo[4]) + '</td></tr>' +
+                '<tr><td><b>Thắng Gấp/Tăng Tốc:</b> ' + data[40] + '/' + data[41] + '</td><td><b>Định Mức Nhi&#234;n Liệu: </b>' + data[45] + ' ℓ</td></tr>' +
+                '<tr><td><b>Số Lần SOS:</b> ' + data[43] + '</td><td><b>Lượng Ph&#225;t Thải Kh&#237; CO2: </b>' + data[44] + ' ℓ</td></tr>' +
+                '</table></div></td></tr>';
+            var sensor = '';
+            var remark = vehicleInfo[8];
+            var sensorData = data[27];
+            if (sensorData != null && sensorData.length > 0) {
+                var fuel = 0, fuelCount=0;
+                for (var i = 0; i < sensorData.length; i++) {
+                    if (sensorData[i].SensorTypeId == 10 ||
+                        sensorData[i].SensorTypeId == 20 ||
+                        sensorData[i].SensorTypeId == 21 ||
+                        sensorData[i].SensorTypeId == 22 ||
+                        sensorData[i].SensorTypeId == 26 ||
+                        sensorData[i].SensorTypeId == 64 ||
+                        sensorData[i].SensorTypeId == 65) {
+                        fuelCount++;
+                        fuel += sensorData[i].Value;
+                    }
+                }
+                for (var i = 0; i < sensorData.length; i++) {
+                    sensor += getContainerSensorValues(data, sensorData[i]);
+                }
+                if (fuelCount > 1) {
+                    sensor += '<tr style="border-top:1px solid #f1f1f1;"><td><b>Σ: </b></td><td>' + (fuel / 100.00) +'ℓ</td><td></td><td></td></tr>';
+                }
+            }
+            var location = data[7] + ' ' + getRegion(data[34]);
+            if (location.toLowerCase().indexOf('[dk]') > 0) {
+                location = location.substring(0, location.toLowerCase().indexOf('[dk]'));
+            }//<span class="close-popup" onclick="removeCurrentPopup();"></span>
+
+            var isBlockViewingOfDrivingTime = 'False'
+            if (isBlockViewingOfDrivingTime === "True")
+                decree91 = ''
+
+            return '<table class="popup-info" width="100%">' +
+                '<tr>' +
+                '<td>' +
+                '<b>Xe:</b>' +
+                '</td>' +
+                '<td colspan="3">' +
+                '<span class="vehicle_plate">' + vehicleInfo[1] + '</span>(' + data[4] / 100 + ' Km/h)' +
+                '</td>' +
+                '</tr>' +
+
+                '<tr>' +
+                '<td>' +
+                '<b style="white-space:nowrap;">Thời Gian: </b>' +
+                '</td>' +
+                '<td>' + Util.date.formatFullDateTime(getTime(data[1])) + '</td>' +
+                '<td><b>Km: </b></td><td>' + data[10] / 100 + ' Km</td>' +
+                '</tr>' +
+                '<tr>' +
+               '<td colSpan="4">' + '<div style="display: flex; flex-wrap: nowrap; align-items: center;">' + getSensorInfoByStatus(data[8], data?.[77]) +
+                (data[68] == "1" ? ('<div id="hooter-status-1" ><img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-green.png" />&nbsp;<span>C&#242;i Mở</span>&nbsp;&nbsp;</div>') : "") +
+                (data[68] == "0"? ('<div id="hooter-status-0"><img alt="" src="https://cdn.quanlyxe.vn/v2/Content/images/dot-red.png" />&nbsp;<span>C&#242;i Tắt</span>&nbsp;&nbsp;</div>') : "") + ' </div> </td>' + 
+                '</tr>' +
+                sensor +
+                //phuongdd - input/output
+                '<tr>' +
+                '<td><b>In/Output:</b></td>' +
+                '<td>' + showInputOutputInfo(data[11], data[12]) + '</td>' +
+                '<td colspan="2"><b>Input1:</b> ' + data[13] / 100 + '(V), <b>Input2:</b> ' + data[14] / 100 + '(V)</td>' +
+                '</tr>' +
+
+                '<tr>' +
+                '<td style="vertical-align:top;"><b>Vị Tr&#237;: </b></td>' +
+                '<td colspan="3" align="left" style="word-wrap:break-word;">' + location + '</td>' +
+                '</tr>' +
+
+                (remark != null && remark.length > 0 ?
+                    '<tr id="_trRemark">' +
+                    '<td ><b>Ghi Ch&#250;: </b></td>' +
+                    '<td colspan="3" align="left" style="color:red; max-width: 350px" id="_remarkVehicle">' + remark + '</td>' +
+                    '</tr>' : '') +
+
+                '<tr>' +
+                '<td><b>Số ĐT:</b></td>' +
+                '<td>' + (vehicleInfo[9] == null ? '' : vehicleInfo[9]) + '</td>' +
+                (data[15] > 0 ?
+                    '<td><b>' + ((data.Status & 1) > 0 ? 'Dừng xe' : 'Đỗ xe') + ':</b></td>' +
+                    '<td>' + Util.date.formatTimeFromSeconds(data[1] - data[15]) + '</td>' : '') +
+                '</tr>' +
+
+                decree91 +
+                '<tr>' +
+                '<td colspan="4" align="right" class="pnlFuncs">' +
+                (hooterPermission == "True" && data[68] == "0" ? "<button id='btn-setting-hooter-0' onclick=\"TurnOnOffHooter(" + data[0] + " , " + data[68] + ");\" title=\"Mở C&#242;i\" style='color:green;'><i class='fa fa-volume-up'></i></button>" : '') +
+                (hooterPermission == "True" && data[68] == "1" ? "<button id='btn-setting-hooter-1' onclick=\"TurnOnOffHooter(" + data[0] + " , " + data[68] + ");\" title=\"Tắt C&#242;i\" style='color:red;'><i class='fa fa-volume-mute'></i></button>" : '') +
+                "<button onclick=\"sendVehicleError(" + data[0] + ");\" title=\"Gửi B&#225;o Lỗi\" style='color:red;'><i class='fa fa-exclamation-triangle'></i></button>" +
+                // "<button onclick=\"showDispatch(" + data[0] + ",'" + vehicleInfo[1] + "')\" title=\"Điều T&#224;i Xế\" /><i class='icon-user'></i></button>" +
+                "<button onclick=\"showEventTab();\" title=\"Sự Kiện\" /><i class='fa fa-terminal'></i></button>" +
+               //  "<button onclick=\"showUpdateRemark(" + data[0] + ")\" title=\"Ghi Ch&#250;\" /><i class='icon-edit'></i></button>" +
+                "<button onclick=\"monitor(" + data[0] + ")\" title=\"Xem Tr&#234;n Bản Đồ\" /><i class='fa fa-desktop'></i></button>" +
+                "<button onclick=\"ShowMap(" + data[2] + ", " + data[3] + ")\" title=\"Xem Tr&#234;n Bản Đồ\" /><i class='fa fa-map-marker'></i></button>" +
+                (POI_UPDATE_MODULE ? ("<button onclick=\"AddPoint2(" + data[2] * 1e-6 + ", " + data[3] * 1e-6 + ")\" title=\"Th&#234;m Điểm\" /><i class='icon-google-maps'></i></button>") : "") +
+                "<button onclick=\"javascript:estimateDistance(" + data[0] + ")\" title=\"T&#237;nh Khoảng C&#225;ch\" /><i class='fa fa-road'></i></button>" +
+                "<button onclick=\"showHistory(" + data[0] + ")\" title=\"Xem Lại Lộ Tr&#236;nh\" /><i class='fa fa-clock'></i></button>" +
+                '</td>' +
+                '</tr>' +
+                '</table>';
+        }
+
+        function hideshowpopup(event) {
+            var cls = $(event).find('i').first();
+            cls.attr('class') === 'up' ? cls.removeClass('up').addClass('down') : cls.removeClass('down').addClass('up')
+            $("div[name='info']").each(function () {
+                $(this).attr('class') === 'show' ? $(this).fadeOut("slow").removeClass('show').addClass('hide') : $(this).fadeIn("slow").removeClass('hide').addClass('show');
+            });
+        }
+
+        function exportStatuses() {
+            var type = "";
+            type+=SENSORS['temperature'].selected ? 'temperature' : '';
+            type += SENSORS['fuel'].selected ? ',fuel,' : '';
+            window.location = '/Monitor.aspx/ExportDrivingStatuses?type=' + type;
+    }
+
+        function PopUpExpiredPhoneNumberNotification(statusPopup) {
+            if (statusPopup == ExpiredPhoneStatus.NullPhone) {
+                $('#myModal-phone-expired').css('display', 'none');
+                $('#myModal-popup-phone-null').css('display', 'block');
+            }
+            if (statusPopup == ExpiredPhoneStatus.Expired) {
+                $('#myModal-popup-phone-null').css('display', 'none');
+                $('#myModal-phone-expired').css('display', 'block');
+            }
+        }
+
+        $(document).ready(function () {
+            console.log("phonestatus:", phoneUser);
+            console.log("1:", ExpiredPhoneStatus.NullPhone);
+
+            if (phoneUser == ExpiredPhoneStatus.NullPhone) {
+                PopUpExpiredPhoneNumberNotification(ExpiredPhoneStatus.NullPhone);
+            }
+            if (phoneUser == ExpiredPhoneStatus.Expired) {
+                PopUpExpiredPhoneNumberNotification(ExpiredPhoneStatus.Expired);
+            }
+        });
+
+    function UpdateExpiredPhoneDate() {
+                $('#myModal-phone-expired').css('display', 'none');
+                $('#popup-loading').css('display', 'block');
+                $.ajax({
+                url: '/Monitor.aspx/UpdateExpiredPhoneDate',
+                type: "POST",
+                    success: function (data) {
+                    if (data === 'ok') {
+                        $('#popup-loading').css('display', 'none');
+                    }
+                },
+                error: function (xhr) {
+                    $('#popup-loading').css('display', 'none');
+                }
+               });
+            }
+</script>
+
+</head>
+<body>
+            <div id="zalo-icon" class="zalo-chat-widget" data-oaid="1118358041832522635" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
+        <script src="https://sp.zalo.me/plugins/sdk.js"></script>   
+
+
+    <script type="text/javascript">
+        var Url = {
+            get: function(endpoint) {
+                var baseUrl = window.location.origin;
+                return baseUrl + '/' + endpoint;
+            },
+            cdn: function (endpoint) {
+                return `https://cdn.quanlyxe.vn/v2//${endpoint}`;
+            }
+        };
+    </script>   
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJ96TE34WD"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-DJ96TE34WD');
+            gtag('set', { 'user_id': '62488' });
+        </script>
+
+
+<!--minifier-->
+<link href="https://cdn.quanlyxe.vn/v2/Scripts/static/FancyBox2/fancybox.css?" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://cdn.quanlyxe.vn/v2/Scripts/static/FancyBox2/fancybox.umd.js"></script>
+
+
+
+<div id="popUpAlertPassword" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Th&#244;ng B&#225;o</h4>
+            </div>
+            <div class="modal-body">
+                <p>M&#226;̣t kh&#226;̉u của bạn kh&#244;ng an toàn. Có mu&#244;́n thay đ&#244;̉i m&#226;̣t kh&#226;̉u?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Bỏ qua</button>
+                <button type="button" class="btn btn-primary" onclick="changePassword();">Đổi mật khẩu</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    var defaultPassword = '';
+
+
+    function checkDefaultPasswordCallback() {
+        if (defaultPassword) {
+            $("#popUpAlertPassword").modal();
+        }
+    }
+
+    function Notification2Callback() {
+        $.post(Url.get('Home.aspx/GetNotifications'), {
+            page: 1,
+            size: 10
+        }, function (data) {
+            var counter = 0;
+            var length = data.length;
+            var id = '';
+            $('#notificationMenu2').html('');
+            if (length > 0) {
+                for (var i = 0; i < length; i++) {
+                    if (counter < 10) {
+                        var unread = 'unread';
+                        if (data[i].ReadTime != '') {
+                            unread = '';
+                        } else {
+                            if (id=='') {
+                                id = data[i].Id;
+                            }
+                        }
+                        $('#notificationMenu2').append('<li id="vietmap-notification-' + data[i].Id + '" class="vietmap-notification ' + unread + '"><a href="#" onclick=\"showNotification2Popup(\''  + data[i].Id +'\');\"><span class="new"></span><img class="notification-image" src="https://cdn.quanlyxe.vn/v2/Content/images/vietmap.png" width="32" height="32"/><span class="notification-title">' + data[i].Title + '</span><br/><span class="notification-date">' + data[i].SendTime + '</span></a></li>');
+                        if (i < length - 1) {
+                            $('#notificationMenu2').append('<li class="divider"></li>');
+                        }
+                    }
+                    counter++;
+                    if (counter > 10) {
+                        break;
+                    }
+                }
+            } else {
+                $('#notificationMenu2').append('<li><a>Không có thông báo mới</a></li>');
+            }
+            displayUnreadNotification2s();
+            var controllerName = 'Monitor';
+            var actionName = 'Index';
+                if (id != '' && controllerName.toLocaleLowerCase() === 'monitor' && actionName.toLocaleLowerCase() === 'index') {
+                    if ($('div.fancybox-wrap').length<=0)
+                    {
+                        setTimeout(function () {
+                            showNotification2Popup(id);
+                        }, 2000);
+                    }
+            }
+        });
+    };
+
+    function displayUnreadNotification2s() {
+        var count = $('#notificationMenu2 .unread').length;
+        $('#notificationBag2 .bag-number').html(count);
+    }
+
+    function showNotification2Popup(id) {
+        var url = '/Home.aspx/Notification?id='+id;
+
+        $('#vietmap-notification-' + id).removeClass('unread');
+        displayUnreadNotification2s();
+
+        openFancyboxByIframe(url);
+    }
+    function setTitle2(title) {
+        $('#NotificationWindow2 .modal-title').html(title);
+    }
+    function hidePopupNotification2() {
+        $('#NotificationWindow2').modal().hide();
+    }
+    var vehicleReminderCounter = 580;
+
+    function VehicleReminderCallback() {
+        setTimeout(VehicleReminderCallback, 1000);
+        vehicleReminderCounter++;
+        if (vehicleReminderCounter > 600) {
+            vehicleReminderCounter = 0;
+            $.post(Url.get('Home.aspx/GetVehicleReminderStatus'), {}, function (data) {
+                var obj = $('#vehicleReminderBag .bag-number');
+                if (data.length > 0) {
+                    obj.html(data[0]);
+                } else {
+                    obj.html(0);
+                }
+                obj = $('#vehicleReminderBagMobile .bag-number');
+                if (data.length > 0) {
+                    obj.html(data[0]);
+                } else {
+                    obj.html(0);
+                }
+            });
+        }
+    }
+
+    var vehicleTrackingFeedbackCounter = 580;
+    function VehicleTrackingFeedbackCallback() {
+        setTimeout(VehicleTrackingFeedbackCallback, 1000);
+        vehicleTrackingFeedbackCounter++;
+        if (vehicleTrackingFeedbackCounter > 600) {
+            vehicleTrackingFeedbackCounter = 0;
+            getVehicleFeedbackStatus();
+        }
+    }
+    function getVehicleDriving4H() {
+        $('#driving4hMenu').html('<li><img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="36" /></li>');
+        $('#driving4hMenuMobile').html('<li><img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="36" /></li>');
+        $.post(Url.get('Home.aspx/GetVehicleDriving4H'), {}, function (data) {
+            if (data.length > 0) {
+                $('#driving4hMenu').html('');
+                $('#driving4hMenuMobile').html('');
+                var length = data.length;
+                for (var i = 0; i < length; i++) {
+                    let run3h30 = 'driving-alert';
+                    if (data[i].RunTime > 4 * 3600) {
+                        run3h30 = 'driving-violate';
+                    }
+                    $('#driving4hMenu').append('<li class="driving4h ' + run3h30 + '" title="Lái xe liên tục"><a href="#" onclick="selectVehiclePopupDriving4H(' + data[i].Id + ');"><i class="icon-car driving4h-image"/><span class="driving4h-title">' + data[i].Plate + '</span><br/><span>' + data[i].Driver + '(' + data[i].Phone + ')</span><br/><span class="driving-type">' + Util.date.formatTimeFromSeconds(data[i].RunTime) + '</span></a></li>');
+                    $('#driving4hMenuMobile').append('<li class="driving4h ' + run3h30 + '" title="Lái xe liên tục"><a href="#" onclick="selectVehiclePopupDriving4H(' + data[i].Id + ');"><i class="icon-car driving4h-image"/><span class="driving4h-title">' + data[i].Plate + '</span><br/><span>' + data[i].Driver + '(' + data[i].Phone + ')</span><br/><span class="driving-type">' + Util.date.formatTimeFromSeconds(data[i].RunTime) + '</span></a></li>');
+                    if (i < length - 1) {
+                        $('#driving4hMenu').append('<li class="divider"></li>');
+                        $('#driving4hMenuMobile').append('<li class="divider"></li>');
+                    }
+                }
+                $('#driving4hBag .bag-number').html(length);
+                $('#driving4hBagMobile .bag-number').html(length);
+                $('#CounterVehicleOverTimeDriving').html('(' + length + ') ');
+                window.VehicleDriving4H = length;
+            } else {
+                $('#driving4hMenu').html('<li><a>Không có xe vi phạm</a></li>');
+                $('#driving4hMenuMobile').html('<li><a>Không có xe vi phạm</a></li>');
+                $('#driving4hBag .bag-number').html(0);
+                $('#driving4hBagMobile .bag-number').html(0);
+                window.VehicleDriving4H = 0;
+            }
+        });
+    }
+    function loadDataFeedback(flag) {
+        if (flag) {
+            $('#grid').data('kendoGrid').dataSource.page(1);
+        } else {
+            $('#grid').data('kendoGrid').dataSource.read();
+        }
+    }
+    function AddFeedback() {
+        var url = '/VehicleTrackingFeedback.aspx/Add';
+        openFancyboxByIframe(url);
+    }
+    function closePopUpFeedback(obj) {
+        if (obj) {
+            loadDataFeedback(true);
+         vmNotify('success', '', '', 'Cập Nhật Th&#224;nh C&#244;ng');
+     }
+     closeFancybox();
+    }
+     function getVehicleFeedbackStatus() {
+         $('#vehicleTrackingFeedbackMenu').html('<li><img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="36" /></li>');
+         $.post(Url.get('Home.aspx/GetTotalVehicleFeedBackStatus'), {}, function (data) {
+
+         $('#vehicleTrackingFeedbackMenu').html('');
+         $('#vehicleTrackingFeedbackMenu').append(
+                 '<li>' +
+                 '<button class="btn btn-link text-start w-100 px-2 py-2" style="font-weight: normal;" onclick="AddFeedback()">' +
+                 '<i class="icon-circle-plus"></i> Gửi th&#244;ng b&#225;o lỗi' +
+                 '</button>' +
+                 '</li><li class="divider"></li>'
+             );
+         if (data.length > 0) {
+
+             var length = data.length;
+             var maxDisplay = 10;
+             if (length < maxDisplay) {
+                 maxDisplay = length;
+             }
+             for (var i = 0; i < maxDisplay; i++) {
+                 var itemHtml = `
+                        <li class="vehicletrackingfeedback" title="Thông Tin Lỗi">
+                            <a href="#">
+                                <i class="icon-car vehicletrackingfeedback-image"></i>
+                                <span class="vehicletrackingfeedback-title">${data[i].Plate} ${getStatusLabel(data[i].Status)}</span><br/>
+                                <span class="lastlog-text" title="${data[i].LastLog}">${data[i].LastLog}</span>
+                            </a>
+                        </li>`;
+
+                 var $item = $(itemHtml);
+                 $item.find('.vehicletrackingfeedback-image').css('color', getRandomColor());
+                 $('#vehicleTrackingFeedbackMenu').append($item);
+                 if (i < maxDisplay - 1) {
+                     $('#vehicleTrackingFeedbackMenu').append('<li class="divider"></li>');
+                 }
+             }
+
+             $('#vehicleTrackingFeedbackMenu').append('<li class="divider"></li>');
+             if (length != 0) {
+
+                 $('#vehicleTrackingFeedbackMenu').append(
+                    '<li class="text-center">' +
+                    '<button class="btn btn-link w-100 py-2" style="font-weight: normal;" onclick="window.location.href=\'/VehicleTrackingFeedback/Index\'">' +
+                    'Xem th&#234;m' +
+                    '</button>' +
+                    '</li>'
+                );
+             }
+         } else
+         {
+
+             }
+             $('#vehicleTrackingFeedbackBag .bag-number').html(data.length);
+     });
+    }
+ function getStatusLabel(status) {
+    let label = '';
+    let cssClass = '';
+
+    switch (status) {
+        case 0:
+            label = 'Chờ Xử Lý';
+            cssClass = "feedback-status-pending";
+            break;
+        case 1:
+            label = 'Đang Xử Lý';
+            cssClass = "feedback-status-inprogress";
+            break;
+        case 2:
+            label = 'Đã Xử Lý';
+            cssClass = "feedback-status-resolved";
+            break;
+        default:
+            label = "";
+            cssClass = "";
+            break;
+    }
+
+    return `<span class="${cssClass}">${label}</span>`;
+}
+    function selectVehiclePopupDriving4H(id) {
+        if (window.selectVehicleDriving4HCallback) {
+            window.selectVehicleDriving4HCallback(id);
+        }
+    }
+    ///////////////////////////////////////
+    var vehicleDrivingCounter = 100;
+
+    function changeColorDriving(id, key) {
+        const drivingBag = $(`#${id}Bag .bag-number`);
+        const drivingBagMobile = $(`#${id}BagMobile .bag-number`);
+
+        if (window[key] > 0) {
+            drivingBag.addClass('wrb');
+            drivingBagMobile.addClass('wrb');
+        } else {
+            drivingBag.removeClass('wrb');
+            drivingBagMobile.removeClass('wrb');
+        }
+    }
+
+    function VehicleDrivingCallBack() {
+        setTimeout(VehicleDrivingCallBack, 1000);
+        vehicleDrivingCounter++;
+        changeColorDriving('driving4h', 'VehicleDriving4H')
+        changeColorDriving('driving10H', 'VehicleDriving10H')
+        changeColorDriving('driving48H', 'VehicleDriving48H')
+
+        if (vehicleDrivingCounter > 120) {
+            vehicleDrivingCounter = 0;
+            getVehicleDrivingTimes();
+        }
+    }
+
+    function getVehicleDrivingTimes() {
+        $.post(Url.get('Home.aspx/GetVehicleDrivingTime'), {}, function (data) {
+            if (data) {
+                const { _4h, _10h, _48h } = data;
+
+                const drivingTimeList = [
+                    {
+                        id: 'driving4h',
+                        time: _4h,
+                        windowKey: 'VehicleDriving4H',
+                        bag: 'driving4hBag',
+                        bagMobile: 'driving4hBagMobile',
+                        idCounterMobile: 'CounterVehicleOverTimeDriving'
+                    },
+                    {
+                        id: 'driving10h',
+                        time: _10h,
+                        windowKey: 'VehicleDriving10H',
+                        bag: 'driving10HBag',
+                        bagMobile: 'driving10hBagMobile',
+                        idCounterMobile: 'CounterVehicleDailyDriving'
+                    },
+                    {
+                        id: 'driving48h',
+                        time: _48h,
+                        windowKey: 'VehicleDriving48H',
+                        bag: 'driving48HBag',
+                        bagMobile: 'driving48hBagMobile',
+                        idCounterMobile: 'CounterVehicleWeeklyDriving'
+                    },
+                ]
+
+                drivingTimeList.forEach(item => {
+                    const { time, windowKey, bag, bagMobile, idCounterMobile } = item;
+                    
+                    $(`#${bag} .bag-number`).html(time);
+                    $(`#${bagMobile} .bag-number`).html(time);
+                    
+                    if (time > 0) {
+                        $(`#${idCounterMobile}`).html(`(${time})`);
+                    }
+                    window[windowKey] = time;
+                });
+            }
+        });
+    }
+
+    function getListVehicleDriving(vehicles = [], violateTime = 10 * 3600 , id = 'driving10H', windowKey = 'VehicleDriving10H') {
+        const vehiclesSize = vehicles.length;
+        const menu = id + 'Menu';
+        const menuMobile = id + 'MenuMobile';
+        const bag = id + 'Bag';
+        const bagMobile = id + 'BagMobile';
+
+        const sortVehicles = vehicles.sort((a, b) =>  b.Time - a.Time);
+
+        if (vehiclesSize > 0) {
+                $('#' + menu).html('');
+                $('#' + menuMobile).html('');
+                sortVehicles.forEach(vehicle => {
+                    let colorType = 'driving-alert';
+                    if (vehicle.Time > violateTime) {
+                        colorType = 'driving-violate';
+                    }
+                    const vehicleMeta = `
+                        <li class="driving10H ${colorType}" title="Lái xe liên tục">
+                            <a style="display: flex; align-items: center;" href="#" onclick="selectVehiclePopupDriving10H(${vehicle.Id});">
+                                <i class="icon-car driving10H-image" style="margin-right: 10px"></i>
+                                <div>
+                                    <div class="driving10H-title">${vehicle.Plate}</div>
+                                    <div style="font-size: 13px">${vehicle.Driver} (${vehicle.Phone})</div>
+                                    <span class="driving-type">${Util.date.formatTimeFromSeconds(vehicle.RunTime)}</span>
+                                </div>
+                            </a>
+                        </li>
+                    `;
+                    $('#' + menu).append(vehicleMeta);
+                    $('#' + menuMobile).append(vehicleMeta);
+                })
+                $(`#${bag} .bag-number`).html(vehiclesSize);
+                $(`#${bagMobile} .bag-number`).html(vehiclesSize);
+                window[windowKey] = vehiclesSize;
+            } else {
+                $(`#${menu}`).html('<li><a>Không có xe vi phạm</a></li>');
+                $(`#${menuMobile}`).html('<li><a>Không có xe vi phạm</a></li>');
+                $(`#${bag} .bag-number`).html(0);
+                $(`#${bagMobile} .bag-number`).html(0);
+                window[windowKey] = 0;
+            }
+
+    }
+
+    function getVehicleDriving10H() {
+        $('#driving10HMenu').html('<li><img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="36" /></li>');
+        $('#driving10HMenuMobile').html('<li><img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="36" /></li>');
+
+        $.post(Url.get('Home.aspx/GetVehicleDriving10H'), {}, function (data) {
+            getListVehicleDriving(data || []);
+        });
+    }
+
+    function getVehicleDriving48H() {
+        const driving48HMenu = 'driving48HMenu';
+        const driving48HMenuMobile = 'driving48HMenuMobile';
+        $('#' + driving48HMenu).html('<li><img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="36" /></li>');
+        $('#' + driving48HMenuMobile).html('<li><img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="36" /></li>');
+
+        $.post(Url.get('Home.aspx/GetVehicleDriving48H'), {}, function (data) {
+            getListVehicleDriving(data || [], 48 * 3600, 'driving48H', 'VehicleDriving48H');
+        });
+    }
+
+    function selectVehiclePopupDriving10H(id) {
+        if (window.selectVehicleDriving10HCallback) {
+            window.selectVehicleDriving10HCallback(id);
+        }
+    }
+</script>
+<div class="top-bar">
+    <div class="com-info visible-lg visible-md">
+        <a href="/Home.aspx">
+            <img alt="VIETMAP" height="30" src="https://cdn.quanlyxe.vn/v2/Content/images/logo.gif" />
+            <span class="text-muted">
+                Hệ thống quản l&#253; xe
+            </span>
+        </a>
+        <div class="hotline">
+            
+                    <a href="/nd91.aspx">
+                        <span class="glyphicon glyphicon-cloud-upload"></span> C&#226;̣p Nh&#226;̣t Danh Sách Xe Gửi V&#234;̀ Cục Cảnh S&#225;t Giao Th&#244;ng-QCVN06
+                    </a>
+
+            <span class="label hot-line" style="text-transform: uppercase; background-color: red; color: white;">
+                Hỗ trợ&nbsp;:&nbsp;<span id="spanSupportPhone" style="font-size: 18px;">1900 633 378</span>
+            </span>
+            &nbsp;
+            <a class="lang" href="/Account.aspx/Vietnam">
+                <img alt="vn" src="https://cdn.quanlyxe.vn/v2/content/images/vietnam_flag.png" style="width: 25px;" />
+            </a>
+            <a class="lang" href="/Account.aspx/English">
+                <img alt="en" src="https://cdn.quanlyxe.vn/v2/content/images/united_kingdom_flag.png" style="width: 25px;" />
+            </a>
+            <a class="lang" href="/Account.aspx/China">
+                <img alt="en" src="https://cdn.quanlyxe.vn/v2/content/images/china_flag.png" style="width: 25px;" />
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!-- Static navbar -->
+    <div class="navbar navbar-default top-menu" role="navigation" id="topMenu">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand visible-xs" href="/Home.aspx" style="padding: 0"><img src="https://cdn.quanlyxe.vn/v2/Content/images/logo_white.png" height="40" /></a>
+            <div class="btn-group visible-xs pull-right mobile-menu-notifications">
+                <a id="notificationBagMobile" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white" onclick="Notification2Callback();">
+                    <i class="icon-globe" aria-hidden="true" style="line-height: 0px;"></i>
+                    <span class="bag-number">
+                        <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                    </span>
+                    <span class="caret"></span>
+                </a>
+                <ul id="notificationMenuMobile" class="dropdown-menu dropdown-menu-right" style="width: 250px;">
+                    <li>
+                        <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                    </li>
+                </ul>
+            </div>
+                    <div class="pull-right visible-xs mobile-menu-notifications">
+                        <a href="/Maintenance.aspx" id="vehicleReminderBagMobile" title="Bảo Tr&#236;" style="color: white">
+                            <i class="icon-calendar" aria-hidden="true" style="line-height: 0px;"></i>
+                            <span class="bag-number">
+                                <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                            </span>
+                        </a>
+                    </div>
+
+            <div class="btn-group visible-xs pull-right mobile-menu-notifications">
+                <a id="driving4hBagMobile" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white" onclick="getVehicleDriving4H();">
+                    4H
+                    <span class="bag-number">
+                        <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                    </span>
+                    <span class="caret"></span>
+                </a>
+                <ul id="driving4hMenuMobile" class="dropdown-menu dropdown-menu-right">
+                    <li>
+                        <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="navbar-collapse collapse">
+
+            <!-- Left nav -->
+            <ul class="nav navbar-nav">
+            <li class="visible-lg visible-md visible-sm">
+                        <a href="/Dashboard.aspx">
+                            <i class="icon-home"></i>
+                        </a>
+
+            </li>
+                        <li class="visible-xs">
+                            <a href="/Monitor.aspx" title="Gi&#225;m S&#225;t Xe">
+                                Gi&#225;m S&#225;t Xe
+                            </a>
+                        </li>
+
+                        <li class="visible-xs">
+                            <a href="/History.aspx" title="Xem Lại Lộ Tr&#236;nh">
+                                Xem Lại Lộ Tr&#236;nh
+                            </a>
+                        </li>
+
+                <li class="visible-lg visible-md visible-sm">
+                    <a href="#">
+                        Gi&#225;m S&#225;t Xe<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+
+
+                                <li class="visible-lg visible-md">
+                                    <a href="/Monitor.aspx" title="Tất Cả Xe">
+                                        <span class="icon-display"></span> Tất Cả Xe
+                                    </a>
+                                </li>
+                                <li class="visible-lg visible-md">
+                                    <a href="/Monitor.aspx/MultiVehicle" title="Chia M&#224;n H&#236;nh Theo Xe">
+                                        <span class="icon-show-big-thumbnails"></span> Chia M&#224;n H&#236;nh Theo Xe
+                                    </a>
+                                </li>
+                                <li class="visible-lg visible-md">
+                                    <a href="/Monitor.aspx/MultiScreen" title="Chia M&#224;n H&#236;nh Theo V&#249;ng">
+                                        <span class="icon-more-windows"></span> Chia M&#224;n H&#236;nh Theo V&#249;ng
+                                    </a>
+                                </li>
+                                <li class="visible-xs visible-sm">
+                                    <a href="/Monitor.aspx" title="Bản Đồ">
+                                        <span class="icon-display"></span> Tất Cả Xe
+                                    </a>
+                                </li>
+
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="/History.aspx" title="Xem Lại Lộ Tr&#236;nh">
+                                        <span class="icon-clock"></span> Xem Lại Lộ Tr&#236;nh
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="/Monitor.aspx/MonitorVideo" title="Gi&#225;m S&#225;t H&#236;nh Ảnh">
+                                        <span class="icon-camera"></span> Gi&#225;m S&#225;t H&#236;nh Ảnh
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="/Monitor.aspx/MonitorVideoV2" title="Gi&#225;m S&#225;t H&#236;nh Ảnh V2">
+                                        <span class="icon-camera"></span> Gi&#225;m S&#225;t H&#236;nh Ảnh V2
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="/Monitor.aspx/ImagesVehicle" title="Gi&#225;m S&#225;t H&#236;nh Ảnh Theo Xe">
+                                        <span class="icon-camera"></span> Gi&#225;m S&#225;t H&#236;nh Ảnh Theo Xe
+                                    </a>
+                                </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        Quản L&#253;<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                                <li class="visible-lg visible-md">
+                                    <a href="/Monitor3.aspx" title="Bản Đồ">
+                                        <span class="icon-google-maps"></span> Bản Đồ
+                                    </a>
+                                </li>
+                                <li class="divider visible-lg visible-md"></li>
+
+
+                                <li>
+                                    <a href="/Subscription.aspx" title="Danh s&#225;ch g&#243;i dịch vụ">
+                                        <span class="icon-list"></span>&nbsp;Danh s&#225;ch g&#243;i dịch vụ
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="/vehicle.aspx" title="Danh S&#225;ch Xe">
+                                        <span class="icon-car"></span>&nbsp;Danh S&#225;ch Xe
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li class="visible-xs visible-sm">
+                                    <a href="/nd91.aspx">
+                                        <span class="glyphicon glyphicon-cloud-upload"></span> C&#226;̣p Nh&#226;̣t Danh Sách Xe Gửi V&#234;̀ Cục Cảnh S&#225;t Giao Th&#244;ng-QCVN06
+                                    </a>
+                                </li>
+                                <li class="divider visible-xs visible-sm"></li>
+
+                                <li>
+                                    <a href="/driver.aspx" title="Danh S&#225;ch T&#224;i Xế">
+                                        <span class="icon-user"></span>&nbsp;Danh S&#225;ch T&#224;i Xế
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="/DriverSchedule.aspx" title="Quản L&#253; Lịch T&#224;i Xế">
+                                        <span class="icon-calendar"></span>&nbsp;Quản L&#253; Lịch T&#224;i Xế
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+
+                        
+                                <li>
+                                    <a href="/Expense.aspx" title="Quản L&#253; Chi Ph&#237;">
+                                        <span class="icon-usd"></span>&nbsp;Quản L&#253; Chi Ph&#237;
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="/Maintenance.aspx/MaintenanceManagement" title="Quản l&#253; Chi Ph&#237; Bảo Tr&#236; (v2)">
+                                        <span class="icon-settings"></span>&nbsp;Quản l&#253; Chi Ph&#237; Bảo Tr&#236; (v2)
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                            <li>
+                                <a href="/Vehicle.aspx/RegisterVehicleManagement" title="Danh s&#225;ch hạn đăng kiểm của xe">
+                                    <span class="icon-tags"></span>&nbsp;Danh s&#225;ch hạn đăng kiểm của xe
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+
+                                <li>
+                                    <a href="/Maintenance.aspx" title="Quản L&#253; Bảo Tr&#236;">
+                                        <span class="icon-settings"></span>&nbsp;Quản L&#253; Bảo Tr&#236;
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+
+
+                                <li>
+                                    <a href="#" title="Quản L&#253; V&#249;ng, Điểm">
+                                        <span class="icon-google-maps"></span>&nbsp;Quản L&#253; V&#249;ng, Điểm<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/Map.aspx/Geofence">
+                                                <span class="icon-vector-path-all">&nbsp;</span>V&#249;ng/Đường
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="/Map.aspx/Point">
+                                                <span class="icon-google-maps">&nbsp;</span>Điểm
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="#" title="Quản L&#253; Người D&#249;ng">
+                                        <span class="icon-user"></span>&nbsp;Quản L&#253; Người D&#249;ng<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="/UserGroup.aspx">
+                                                        <span class="icon-group">&nbsp;</span>Nh&#243;m Người D&#249;ng
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="/User.aspx">
+                                                        <span class="icon-user">&nbsp;</span>Người D&#249;ng
+                                                    </a>
+                                                </li>
+
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="#" title="Quản L&#253; Cảnh B&#225;o">
+                                        <span class="icon-warning-sign"></span>&nbsp;Quản L&#253; Cảnh B&#225;o<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        
+                                                <li>
+                                                    <a href="/EmailProfile.aspx">
+                                                        <span class="icon-message-empty">&nbsp;</span>Cảnh B&#225;o Email
+                                                    </a>
+                                                </li>
+
+
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="" title="C&#224;i Đặt N&#226;ng Cao">
+                                        <span class="icon-cogwheel"></span>&nbsp;C&#224;i Đặt N&#226;ng Cao<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="/PoiCategory.aspx">
+                                                        <span class="icon-google-maps">&nbsp;</span>Loại Địa Điểm
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/ExpenseType.aspx">
+                                                        <span class="icon-usd">&nbsp;</span>Loại Chi Ph&#237;
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/MaintenanceType.aspx">
+                                                        <span class="icon-cogwheel">&nbsp;</span>Loại Bảo Tr&#236;
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/Settings.aspx/VehicleGroup">
+                                                        <span class="icon-cars" aria-hidden="true">&nbsp;</span>&nbsp;Nh&#243;m Xe
+                                                    </a>
+                                                </li>
+
+                                    </ul>
+                                </li>
+
+                    </ul>
+                </li>
+                <li class="visible-md visible-lg">
+                        <a href="#">
+                            Chức Năng<span class="caret"></span>
+                        </a>
+                    <ul class="dropdown-menu">
+                            <li>
+                                <a href="/VehicleShare.aspx/Sharing" title="Cho Mượn Xe">
+                                    <span class="icon-share-alt"></span> Cho Mượn Xe
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                                                    <li>
+                                <a href="/VehicleShare.aspx/Shared" title="Xe Đang Mượn">
+                                    <span class="icon-share-alt"></span> Xe Đang Mượn
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                                                                                                
+
+
+
+                            <li>
+                                <a href="/VehicleTrackingFeedback.aspx" title="Quản L&#253; B&#225;o Lỗi">
+                                    <span class="icon-warning-sign">&nbsp;</span>Quản L&#253; B&#225;o Lỗi
+                                </a>
+                            </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        B&#225;o C&#225;o<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">
+                                    B&#225;o C&#225;o Doanh Nghiệp<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="#">
+                                                    B&#225;o C&#225;o Telematic <span class="caret"></span>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a href="/CompanyReport.aspx/TelematicsDashboard">
+                                                                <span class="icon-charts">&nbsp;Bảng đ&#225;nh gi&#225; tổng quan</span>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="/CompanyReport.aspx/TelematicsSummary">
+                                                                <span class="icon-charts">&nbsp;Bảng đ&#225;nh gi&#225; Telematics</span>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="/CompanyReport.aspx/TelematicsBehavior">
+                                                                <span class="icon-charts">&nbsp;Bảng đ&#225;nh gi&#225; theo h&#224;nh vi</span>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="/CompanyReport.aspx/SafeDriving">
+                                                                <span class="icon-book">&nbsp;B&#225;o c&#225;o xếp hạng l&#225;i xe an to&#224;n</span>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="/CompanyReport.aspx/TelematicsViolation">
+                                                                <span class="icon-book">&nbsp;B&#225;o C&#225;o H&#224;nh Vi L&#225;i Xe</span>
+                                                            </a>
+                                                        </li>
+                                                </ul>
+                                            </li>
+                                            <li class="divider"></li>
+
+
+
+
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="#">
+                                        B&#225;o C&#225;o GSHT - QCVN06/2024<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/Waypoint">
+                                                        <span class="icon-book">&nbsp;</span>Hành trình xe
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/ContinuousDriving">
+                                                        <span class="icon-book">&nbsp;</span>Thời gian l&#225;i xe li&#234;n tục(4H)
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/DailyDriving"><span class="icon-book">&nbsp;</span>L&#225;i xe trong ng&#224;y(10H)</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/Driving48H">
+                                                        <span class="icon-book">&nbsp;</span>L&#225;i xe trong tuần(48H)
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/DeviceImages">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o H&#236;nh Ảnh Từ Thiết Bị Camera
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/Stop">
+                                                        <span class="icon-book">&nbsp;</span>Dừng đỗ xe
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/SummaryByVehicle">
+                                                        <span class="icon-book">&nbsp;</span>Tổng hợp theo xe
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/SummaryByDriver">
+                                                        <span class="icon-book">&nbsp;</span>Tổng hợp theo l&#225;i xe
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/Overspeed">
+                                                        <span class="icon-book">&nbsp;</span>Qu&#225; Tốc Độ Giới Hạn
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/GovmtDaily">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Thống K&#234; Gửi Dữ Liệu Về Cục CSGT
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/GovmtImage">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Thống K&#234; Gửi H&#236;nh Ảnh Về Cục CSGT
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/QCVN31Report.aspx/Psd">
+                                                        <span class="icon-book">&nbsp;</span>T&#244;́c đ&#244;̣ xe từng gi&#226;y
+                                                    </a>
+                                                </li>
+
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="#">
+                                        B&#225;o C&#225;o Địa Điểm V&#224; Tốc Độ<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Stop">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Dừng Đỗ Xe
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Tollgate">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Trạm Thu Ph&#237;
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Point">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Ra V&#224;o Điểm
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Station">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Ra V&#224;o Trạm
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/StationToStation">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Từ Trạm Đến Trạm
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Geofence">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Theo V&#249;ng/Đường
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Overspeed">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Vượt Qu&#225; Tốc Độ
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/OverSpeedByRoad">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Qu&#225; Tốc Theo Cung Đường
+                                                    </a>
+                                                </li>
+
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/HarshBreakAcceleration">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Tăng Tốc/Giảm Tốc Đột Ngột
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Waypoint">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Điểm Lộ Tr&#236;nh
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/ShortWaypoint">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o H&#224;nh Tr&#236;nh R&#250;t Gọn
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/BusTrip">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o H&#224;nh Tr&#236;nh Theo Trạm
+                                                    </a>
+                                                </li>
+
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="#">
+                                        B&#225;o C&#225;o Tổng Hợp<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Summary">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Tổng Hợp
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/SummaryVietmapLive">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Tổng Hợp Theo T&#224;i Xế (Vietmap Live)
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Daily">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Qu&#227;ng Đường V&#224; Nhi&#234;n Liệu Theo Định Mức
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Acc">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Thời Gian Sử Dụng
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Maintenance">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Bảo Tr&#236; Xe
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/DailyActivity">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Hoạt Động Theo Ng&#224;y
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Trip">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o H&#224;nh Tr&#236;nh
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/DailyFuel">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Qu&#227;ng Đường V&#224; Nhi&#234;n Liệu Theo Cảm Biến
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/DailyByVehicle">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Qu&#227;ng Đường &amp; Nhi&#234;n Liệu Tổng Hợp
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/VehicleSummaryByHour">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Qu&#227;ng Đường Theo Giờ 
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/DailyTemperature">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Qu&#227;ng Đường v&#224; Nhiệt Độ Theo Cảm Biến
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/DistanceByDate">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Qu&#227;ng Đường Theo Ng&#224;y
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Shift">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Đăng Nhập/Đăng Xuất T&#224;i Xế
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Warning">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Mất GPS/GPRS
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Event">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Hoạt Động Xe
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/CommandLog">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Theo D&#245;i Lệnh Của Xe
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/ViolatedSummaryByDriver">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Tổng Hợp Vi Phạm Theo T&#224;i Xế
+                                                    </a>
+                                                </li>
+
+
+
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/HighwaySpeed">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Tốc Độ Tr&#234;n Cao Tốc
+                                                    </a>
+                                                </li>
+
+
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/TrafficCamera">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Vi Phạm Phạt Nguội
+                                                    </a>
+                                                </li>
+
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="#">
+                                        B&#225;o C&#225;o Cảm Biến<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Door">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Đ&#243;ng/Mở Cửa
+                                                    </a>
+                                                </li>
+
+
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/AirConditioner">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Tắt/Mở M&#225;y Lạnh
+                                                    </a>
+                                                </li>
+
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Concrete">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Trộn Xả Beton
+                                                    </a>
+                                                </li>
+
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Temperature">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Cảm Biến Nhiệt Độ
+                                                    </a>
+                                                </li>
+
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/TemperatureHumidity">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Nhiệt Độ V&#224; Độ Ẩm
+                                                    </a>
+                                                </li>
+
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/FuelWaypoint">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Cảm Biến Xăng Dầu
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/Fuel">
+                                                        <span class="icon-book">&nbsp;</span>Báo Cáo Thay Đổi Nhi&#234;n Li&#234;̣u
+                                                    </a>
+                                                </li>
+
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="#">
+                                        B&#225;o C&#225;o Kh&#225;c<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+
+                                                <li>
+                                                    <a href="/VehicleReport.aspx/SMS">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Cảnh B&#225;o SMS
+                                                    </a>
+                                                </li>
+
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="/Reports.aspx/UserActivity">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Nhật K&#253; Người D&#249;ng
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="/Reports.aspx/UserLogin">
+                                                        <span class="icon-book">&nbsp;</span>B&#225;o C&#225;o Đăng Nhập Người D&#249;ng
+                                                    </a>
+                                                </li>
+
+                                    </ul>
+                                </li>
+
+                    </ul>
+                </li>
+                <li>
+                            <a href="https://wiki.quanlyxe.vn/qlx/giam-sat-xe/1-tat-ca-xe" target="_blank"><i class="icon-circle-question-mark" style="font-size: 15px; left: 8px; position: absolute;"></i>&nbsp;&nbsp;&nbsp;Trợ Gi&#250;p</a>
+
+                </li>
+                <li>
+                    <a href="/Billing.aspx/Status">
+                        <span class="glyphicon glyphicon-credit-card"></span>&nbsp;Thanh to&#225;n dịch vụ
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-right-custom">
+                <li class="divider"></li>
+                <li class="dropdown visible-lg">
+                    <div style="padding-left: 5px; padding-right: 5px; padding-top: 10px;">
+                    </div>
+                </li>
+
+                <li class="visible-lg visible-md visible-sm">
+                    <a href="#" class='notification-bag' id="driving48HBag" title="L&#225;i xe trong tuần(48H)" onclick="getVehicleDriving48H();">
+                        <span>48H</span>
+                        <span class="bag-number">
+                            <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                        </span>
+                    </a>
+                    <ul id="driving48HMenu" class="dropdown-menu driving-menu">
+                        <li>
+                            <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="36" />
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="visible-lg visible-md visible-sm">
+                    <a href="#" class='notification-bag' id="driving10HBag" title="L&#225;i xe trong ng&#224;y(10H)" onclick="getVehicleDriving10H();">
+                        <span>10H</span>
+                        <span class="bag-number">
+                            <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                        </span>
+                    </a>
+                    <ul id="driving10HMenu" class="dropdown-menu driving-menu">
+                        <li>
+                            <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="36" />
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="visible-lg visible-md visible-sm">
+                    <a href="#" id="driving4hBag" title="L&#225;i Xe Li&#234;n Tục 4H" onclick="getVehicleDriving4H();">
+                        <span>4H</span>
+                        <span class="bag-number">
+                            <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                        </span>
+                    </a>
+                    <ul id="driving4hMenu" class="dropdown-menu">
+                        <li>
+                            <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="36" />
+                        </li>
+                    </ul>
+                </li>
+                
+
+                        <li class="visible-lg visible-md visible-sm">
+                            <a href="/Maintenance.aspx" id="vehicleReminderBag" title="Bảo Tr&#236;">
+                                <i class="icon-calendar" aria-hidden="true" style="line-height: 0px;"></i>
+                                <span class="bag-number">
+                                    <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                                </span>
+                            </a>
+                        </li>
+
+
+                <li class="visible-lg visible-md visible-sm">
+                    <a href="#" id="notificationBag2" title="Th&#244;ng B&#225;o 2">
+                        <i class="icon-globe" aria-hidden="true" style="line-height: 0px;"></i>
+                        <span class="bag-number">
+                            <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                        </span>
+                    </a>
+                    <ul id="notificationMenu2" class="dropdown-menu">
+                        <li>
+                            <img src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" width="12" />
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="icon-user" aria-hidden="true" style="line-height: 0px;"></i>
+                        hoaphat
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/Settings.aspx/CustomerInfo" title="Th&#244;ng Tin Kh&#225;ch H&#224;ng">
+                                        <span class="icon-building"></span> Th&#244;ng Tin Kh&#225;ch H&#224;ng
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+
+                        <li>
+                            <a href="/Settings.aspx" title="Thiết Lập Người D&#249;ng">
+                                <span class="icon-user"></span> Thiết Lập Người D&#249;ng
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                      
+                        <li>
+                            <a href="/Account.aspx/LogOff" title="Tho&#225;t">
+                                <span class="icon-power"></span> Tho&#225;t
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+    
+    
+    <div id="vehicle-loading" style="background-color: rgba(255,255,255,0.7); height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 9999;">
+        <div style="font-size: 20pt; height: 22px; margin: 200px;" align="center">
+            Đang tải danh s&#225;ch xe<br />
+            <img src="https://cdn.quanlyxe.vn/v2/Content/images/ajax-loader.gif" /><br />
+            <span style="        font-size: 12pt;
+        background-color: #c1c1c1;
+        color: white;
+        padding: 5px 10px;
+">H&#227;y click chuột phải l&#234;n bản đồ hoặc phương tiện để xem c&#225;c tiện &#237;ch mở rộng</span>
+<br />
+<br />
+<span style=" font-size: 30px; background-color: white; border: 3px solid #007aff; color: #007aff; padding: 5px 10px; box-shadow: 0 0 10px rgba(75, 77, 78, 0.8) !important; ">Hỗ trợ:&nbsp;1900 633 378</span><br />
+</div>
+</div>
+<div id="popup-loading" style="background-color: rgba(255,255,255,0.7); height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 9999; display:none;">
+    <div style="font-size: 20pt; height: 22px; margin: 200px;" align="center">
+        Vui l&#242;ng đợi...<br />
+        <img src="https://cdn.quanlyxe.vn/v2/Content/images/ajax-loader.gif" /><br />
+        <span style="        font-size: 12pt;
+        background-color: #c1c1c1;
+        color: white;
+        padding: 5px 10px;
+">H&#227;y click chuột phải l&#234;n bản đồ hoặc phương tiện để xem c&#225;c tiện &#237;ch mở rộng</span>
+</div>
+</div>
+<form action="/Monitor.aspx/ExportDrivingStatuses" id="submit_form" method="post"><input id="lastMod" name="lastMod" type="hidden" value="" /></form><script type="text/javascript">
+//<![CDATA[
+if (!window.mvcClientValidationMetadata) { window.mvcClientValidationMetadata = []; }
+window.mvcClientValidationMetadata.push({"Fields":[],"FormId":"submit_form","ReplaceValidationSummary":false});
+//]]>
+</script>
+    <div class="map-content">
+        
+
+<div class="sidebar-left">
+    <div class="vehicle-info-title">
+        <span style="display: block;float: left;padding-top: 5px;">
+            Danh S&#225;ch Xe (<span id="vehicleCounter">0</span>)
+        </span>
+
+        <div class="pull-right">
+            <input data-options="lines: true, cascadeCheck: true" class="easyui-combotree" id="selectVehicleGroup" style="width: 220px!important; color: black;">
+            <span style="position: relative">
+                <button class="btn btn-warning view-option fa fa-download" onclick="exportStatuses()"></button>
+                <button id="Sensor_Road" class="btn btn-default view-option fa fa-tachometer" title="Tốc Độ Theo Cung Đường" onclick="selectSensor('road')"></button>
+                <button id="Table_Setup" class="btn btn-default view-option fal fa-sliders-v" title="C&#224;i đặt kiểu hiển thị" onclick="onMonitorTableSetup()"></button>
+            </span>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <input id="txtSearchBox" type="text" class="form-control" placeholder="Biển Kiểm So&#225;t..."
+           style="border-radius: 0px" onkeyup="searchVehicle();" />
+    <div class="vehicle-wps">
+        <table id="table-vehicle" style="width: 100%;" class="vehicles">
+            <thead>
+                <tr class="header">
+                    <td nowrap="nowrap" class="icon"><span style="display: block; width: 25px;"></span></td>
+                    <td nowrap="nowrap" class="note"></td>
+                    <td nowrap="nowrap" class="plate">Biển Kiểm So&#225;t</td>
+                    <td nowrap="nowrap" class="driver">T&#224;i Xế</td>
+                    <td nowrap="nowrap" class="gpstime">Ng&#224;y/Giờ</td>
+                    <td nowrap="nowrap" class="speed">Km/h</td>
+                    <td nowrap="nowrap" class="satellite">Vệ Tinh</td>
+                    <td nowrap="nowrap" class="mileage">Km</td>
+                    <td nowrap="nowrap" class="mifi">MIFI</td>
+                    <td nowrap="nowrap" class="power">Nguồn</td>
+                    <td nowrap="nowrap" class="fuel">Xăng Dầu</td>
+                    <td nowrap="nowrap" class="temperature">Nhiệt Độ</td>
+                    <td nowrap="nowrap" class="door">Cửa</td>
+                    <td nowrap="nowrap" class="airconditioner">M&#225;y Lạnh</td>
+                    <td nowrap="nowrap" class="collision">Va Chạm</td>
+                    <td nowrap="nowrap" class="mixing">Bồn Trộn</td>
+                    <td nowrap="nowrap" class="district">Vị Tr&#237;</td>
+                    <td nowrap="nowrap" class="address">Địa Chỉ</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+<div id="map-sidebar" class="sidebar-right">
+    
+    
+
+    <div id="map">
+        <div id="timer-status" class="timer-status">30</div>
+        <div class="status-vehicle">
+            <img src="https://cdn.quanlyxe.vn/v2/Content/images/vec/1_green_100.svg"><span id="searchOption1" style="cursor: pointer" onclick="showVehicleStatus1();">Đang chạy(<span id="VehicleStatusRunning">0</span>)</span>
+            <img src="https://cdn.quanlyxe.vn/v2/Content/images/vec/1_grey_100.svg"><span id="searchOption3" style="cursor: pointer" onclick="showVehicleStatus3();">Tắt m&#225;y(<span id="VehicleStatusStop">0</span>)</span>
+            <img src="https://cdn.quanlyxe.vn/v2/Content/images/vec/1_yellow_100.svg"><span id="searchOption2" style="cursor: pointer" onclick="showVehicleStatus2();">Đang dừng(<span id="VehicleStatusIdle">0</span>)</span>
+            <img src="https://cdn.quanlyxe.vn/v2/Content/images/vec/1_blue_100.svg"><span id="searchOption5" style="cursor: pointer" onclick="showVehicleStatus5();">Qu&#225; tốc(<span id="VehicleStatusOverSpeed">0</span>)</span>
+            <img src="https://cdn.quanlyxe.vn/v2/Content/images/vec/1_red_100.svg"><span id="searchOption6" style="cursor: pointer" onclick="showVehicleStatus6();">Cảnh b&#225;o(<span id="VehicleStatusWarning">0</span>)</span>
+            <img src="https://cdn.quanlyxe.vn/v2/Content/images/vec/1_white_000.svg"><span id="searchOption4" style="cursor: pointer" onclick="showVehicleStatus4();">Mất GPRS(<span id="VehicleStatusLost">0</span>)</span>
+            <img src="https://cdn.quanlyxe.vn/v2/Content/images/vec/1_poor_gps.svg"><span id="searchOption7" style="cursor: pointer" onclick="showVehicleStatus7();">Mất GPS(<span id="VehicleStatusNoGPS">0</span>)</span>
+        </div>
+        <div class="guide-right-click">H&#227;y click chuột phải l&#234;n bản đồ hoặc phương tiện để xem c&#225;c tiện &#237;ch mở rộng</div>
+        <div id="control-center" class="control-center" style="top: 10em;">
+            <div style="position: relative">
+                <span class="control-center-button state-expand" onclick=" toggleControlCenterCommands(); "></span>
+                <span class="header">Bảng Điều Khiển</span>
+                <div class="commands">
+                    <p>
+                        <input type="checkbox" id="chkVehicleGroup" checked="checked" onchange="chkVehicleGroup_Change();" />
+                        <label for="chkVehicleGroup">Nh&#243;m xe tr&#234;n bản đồ</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="chkShowSensors" onchange="chkShowSensors_Change();" />
+                        <label for="chkShowSensors">Hiển thị cảm biến </label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="chkHistory" onchange="chkHistory_Change();" />
+                        <label for="chkHistory">Xem Lại Lộ Tr&#236;nh</label>
+                    </p>
+                    
+                    <p style="border-top: 1px solid #f1f1f1;" />
+                    <p id="divVehiclesLongStop">
+                        <input type="checkbox" id="chkVehiclesLongStop" onchange=" onCheckBoardControl('chkVehiclesLongStop', 'vehicle-stop-info')(); " />
+                        <label for="chkVehiclesLongStop"><span id="CounterVehicleLongStop"></span>Dừng, đỗ</label>
+                    </p>
+                    
+                    <p id="divVehiclesNoDriver">
+                        <input type="checkbox" id="chkVehiclesNoDriver" onchange=" onCheckBoardControl('chkVehiclesNoDriver', 'vehicle-driver-info')(); " />
+                        <label for="chkVehiclesNoDriver"><span id="CounterVehicleNoDriver"></span>Kh&#244;ng đăng nhập TX</label>
+                    </p>
+
+                    <p id="divVehicleTrafficViolation">
+                        <input type="checkbox" id="chkVehicleTrafficViolation" onchange=" onCheckBoardControl('chkVehicleTrafficViolation', 'vehicle-traffic-violation-info')(); " />
+                        <label for="chkVehicleTrafficViolation"><span id="CounterVehicleTrafficViolation"></span>Vi phạm phạt nguội</label>
+                    </p>
+                    <p style="border-top:1px solid #f1f1f1;" />
+
+                    <p id="divVehicleOverSpeed">
+                        <input type="checkbox" id="chkVehiclesOverSpeed" onchange=" onCheckBoardControl('chkVehiclesOverSpeed', 'vehicle-overSpeed-info')(); " />
+                        <label for="chkVehiclesOverSpeed"><span id="CounterVehicleOverSpeed"></span>Qu&#225; tốc theo loại xe</label>
+                    </p>
+                    <p id="divVehicleRoadOverSpeed">
+                        <input type="checkbox" id="chkVehicleRoadOverSpeed" onchange=" onCheckBoardControl('chkVehicleRoadOverSpeed', 'vehicle-road-over-speed-info')(); " />
+                        <label for="chkVehicleRoadOverSpeed"><span id="CounterVehicleRoadOverSpeed"></span>Qu&#225; tốc theo cung đường</label>
+                    </p>
+                    <p id="divVehicleOverTimeDriving">
+                        <input type="checkbox" id="chkVehicleOverTimeDriving" onchange=" onCheckBoardControl('chkVehicleOverTimeDriving', 'vehicle-overtime-driving-info')(); " />
+                        <label for="chkVehicleOverTimeDriving"><span id="CounterVehicleOverTimeDriving"></span>L&#225;i xe li&#234;n tục(4H)</label>
+                    </p>
+                    <p id="divVehicleDailyDriving">
+                        <input type="checkbox" id="chkVehicleDailyDriving" onchange="onCheckBoardControl('chkVehicleDailyDriving', 'vehicle-daily-driving-info')(); " />
+                        <label for="chkVehicleDailyDriving"><span id="CounterVehicleDailyDriving"></span>L&#225;i xe trong ng&#224;y(10H)</label>
+                    </p>
+                    <p id="divVehicleWeeklyDriving">
+                        <input type="checkbox" id="chkVehicleWeeklyDriving" onchange="onCheckBoardControl('chkVehicleWeeklyDriving', 'vehicle-weekly-driving-info')(); " />
+                        <label for="chkVehicleWeeklyDriving"><span id="CounterVehicleWeeklyDriving"></span>L&#225;i xe trong tuần(48H)</label>
+                    </p>
+                    <p id="loseSignal">
+                        <input type="checkbox" id="chkloseSignal" onchange="onCheckBoardControl('chkloseSignal', 'vehicle-lose-signal-info')(); " />
+                        <label for="chkloseSignal"><span id="CounterLoseSignal"></span>T&#237;n hiệu cảm biến</label>
+                    </p>
+                    <p id="expiredInspection">
+                        <input type="checkbox" id="chkExpiredInspection" onchange="onCheckBoardControl('chkExpiredInspection', 'vehicle-expiredInspection')(); " />
+                        <label for="chkExpiredInspection"><span id="CounterExpiredInspection"></span> Hạn Đăng Kiểm </label>
+                    </p>
+                    <p style="border-top: 1px solid #f1f1f1;" />
+                    <p id="divStation">
+                        <input type="checkbox" id="chkStation" onchange="chkStation_Change(true); " />
+                        <label for="chkStation">Danh s&#225;ch điểm</label>
+                    </p>
+                    <p id="divGeofence">
+                        <input type="checkbox" id="chkGeofence" onchange="chkGeofence_Change(true); " />
+                        <label for="chkGeofence">Danh s&#225;ch v&#249;ng/đường</label>
+                    </p>
+                    <p id="divMdvrPhoto" style="display:none">
+                        <input type="checkbox" id="chkMdvrPhoto" onchange="chkMdvrPhoto_Change(); " />
+                        <label for="chkMdvrPhoto">Xem hình ảnh</label>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="vehicle-cluster">
+            <div style="background-color: #333; color: white; padding: 5px;">
+                Xe trong nh&#243;m (<span id="vehicle-cluster-counter"></span>)&nbsp;&nbsp;&nbsp;
+                <div style="float: right;">
+                    <img onclick=" $('.vehicle-cluster').slideUp(); " src="https://cdn.quanlyxe.vn/v2/Content/images/wclose.png" title="Đ&#243;ng" />
+                </div>
+            </div>
+            <div class="content" style="max-height: 200px; overflow: auto;">
+                <table></table>
+            </div>
+        </div>
+        <div id="mapTab">
+            <a class="close-box" href="javascript:closeMapTab(true)"><i class="icon icon-down-arrow"></i></a>
+            <ul id="mapTabs" class="tab" style="background-color: #fff;">
+                <li id="liImage" class="active" tab="tbImage">
+                    <i class="icon-picture"></i> Hình ảnh
+                </li>
+                <li id="liGraph" tab="tbGraph">
+                    <i class="icon-charts"></i> Đồ Thị
+                </li>
+                <li id="liEvent" tab="tbEvent">
+                    <i class="icon-pushpin"></i> Sự Kiện
+                </li>
+            </ul>
+            <div id="tbImage" class="tab-content" align="center">
+                <span id="imgTPlate" class="imgTitle"></span>
+                <span id="imgTDate" class="imgTitle"></span>
+                <img id="VehicleImage" style="cursor: pointer;" alt="" onclick="openVehicleImageGalerry();" class="image-box" src="https://cdn.quanlyxe.vn/v2/Content/images/not_found.jpg" height="180" onerror="this.src = 'https://cdn.quanlyxe.vn/v2/Content/images/not_found.jpg'" />
+            </div>
+            <div id="tbGraph" class="tab-content" style="overflow: hidden;">
+                <img id="graph-loading" src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" height="100" />
+            </div>
+            <div id="tbEvent" class="tab-content" style="overflow: auto">
+                <img id="tbEvent-graph-loading" src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" height="100" />
+            </div>
+            <div id="tbWriteCard" class="tab-content" style="overflow: auto">
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Modal Header</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Some text in the modal.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="history-info" style="display: none">
+        <span class="header">Xem Lại Lộ Tr&#236;nh</span>
+        <div id="historyTable">
+            <table style="width: 100%" class="history-waypoint">
+                <tr>
+                    <td>
+                        Xe:
+                    </td>
+                    <td>
+                        <select id="selectVehicle" style="width: 80%" class="form-control"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <a href="javascript:window.loadHistoryByTime(900)">15p</a>&nbsp;<a href="javascript:window.loadHistoryByTime(1800)">30p</a>&nbsp;<a href="javascript:window.loadHistoryByTime(3600)">1h</a>&nbsp;<a href="javascript:window.loadHistoryByTime(7200)">2h</a>&nbsp;<a href="javascript:window.loadHistoryByTime(10800)">3h</a>&nbsp;<a href="javascript:window.loadHistoryByTime(14400)">4h</a>&nbsp;<a href="javascript:window.loadHistoryByTime(18000)">5h</a>&nbsp;<a href="javascript:window.loadHistoryByTime(21600)">6h</a>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Từ:</td>
+                    <td>
+                        <input id="txtFromDate" type="text" class="date-picker" value="2025-08-14" /><input id="txtFromTime" type="text" class="time-picker" value="00:00" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Đến:</td>
+                    <td>
+                        <input id="txtToDate" type="text" class="date-picker" value="2025-08-14" /><input id="txtToTime" type="text" class="time-picker" value="23:59" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <a type="button" onclick=" loadHistory(); " class="btn btn-primary">Xem nhanh</a>
+                        <a class="btn btn-danger" href="javascript:window.viewHistory();" title="Mở Cửa Sổ Mới">
+                            <i class="fa fa-external-link"></i>
+                        </a>
+                        <img id="history-loading" src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" style="display: none" height="32" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="vehicle-driver-info" style="display: none">
+        <span class="header">Kh&#244;ng đăng nhập TX (<span class="counter"></span>)</span>
+        <div id="VehiclesNoDriverTable">
+            <div class="vehicle-driver-list">
+                <table class="vehicles-driver" style="width: 100%;">
+                    <thead>
+                        <tr class="title">
+                            <td nowrap="nowrap" id="tdConfig"></td>
+                            <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                            <td nowrap="nowrap" id="tdGPSTime">Ng&#224;y/Giờ</td>
+                            <td nowrap="nowrap" id="tdAtTime">~</td>
+                            <td nowrap="nowrap" id="tdAtAddress">Địa Chỉ</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="vehicle-stop-info" style="display: none">
+        <span class="header">Dừng, đỗ (<span class="counter"></span>)</span>
+        <div id="VehiclesStopTable">
+            <div class="vehicle-stop-list">
+                <table class="vehicles-stop" style="width: 100%;">
+                    <thead>
+                        <tr class="title">
+                            <td nowrap="nowrap" id="tdConfig"></td>
+                            <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                            <td nowrap="nowrap" id="tdTime">Ng&#224;y/Giờ</td>
+                            <td nowrap="nowrap" id="tdDuration">~</td>
+                            <td nowrap="nowrap" id="tdAtAddress">Địa Chỉ</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="vehicle-overSpeed-info" style="display: none">
+        <span class="header">Qu&#225; tốc theo loại xe (<span class="counter"></span>)</span>
+        <div id="VehiclesOverSpeedTable">
+            <div class="vehicle-overSpeed-list">
+                <table class="vehicles-overSpeed" style="width: 100%;">
+                    <thead>
+                        <tr class="title">
+                            <td nowrap="nowrap" id="tdConfig"></td>
+                            <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                            <td nowrap="nowrap" id="tdSpeed">Ng&#224;y/Giờ</td>
+                            <td nowrap="nowrap" id="tdDurationSpeed">~</td>
+                            <td nowrap="nowrap" id="tdAtTime">Km/h</td>
+                            <td nowrap="nowrap" id="tdAtTime">MAX</td>
+                            <td nowrap="nowrap" id="tdAtAddress">Địa Chỉ</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="vehicle-road-over-speed-info" style="display: none">
+        <span class="header">Qu&#225; tốc theo cung đường (<span class="counter"></span>)</span>
+        <div id="VehiclesroadOverSpeedTable">
+            <div class="vehicle-road-overSpeed-list">
+                <table class="vehicles-road-overSpeed" style="width: 100%;">
+                    <thead>
+                        <tr class="title">
+                            <td nowrap="nowrap" id="tdConfig"></td>
+                            <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                            <td nowrap="nowrap" id="tdSpeed">Ng&#224;y/Giờ</td>
+                            <td nowrap="nowrap" id="tdDurationSpeed">~</td>
+                            <td nowrap="nowrap" id="tdAtTime">Km/h</td>
+                            <td nowrap="nowrap" id="tdAtTime">MAX</td>
+                            <td nowrap="nowrap" id="tdAtAddress">Địa Chỉ</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="vehicle-lose-signal-info" style="display: none">
+        <span class="header">T&#237;n hiệu cảm biến  (<span class="counter"></span>)</span>
+        <div id="VehiclesLoseSignalTable">
+            <div class="vehicle-lose-signal-list">
+                <table class="vehicles-lose-signal">
+                    <thead>
+                        <tr class="title">
+                            <td nowrap="nowrap" id="tdConfig"></td>
+                            <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                            <td nowrap="nowrap" id="tdSensorName">T&#234;n Cảm Biến</td>
+                            <td nowrap="nowrap" id="tdDrivingTime">Ng&#224;y/Giờ</td>
+                            <td nowrap="nowrap" id="tdRunningTime">~</td>
+                            <td nowrap="nowrap" id="tdAtAddress">Địa Chỉ</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="vehicle-expiredInspection board-control" style="display: none">
+        <span class="header"> Hạn Đăng Kiểm  (<span class="counter"></span>)</span>
+        <div id="VehicleExpiredInspection">
+            <div class="vehicle-expiredInspection-list">
+                <table class="vehicles-expiredInspection">
+                    <thead>
+                        <tr class="title">
+                            <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                            <td nowrap="nowrap" id="tdSensorName">
+                                Loại Xe
+                            </td>
+                            <td nowrap="nowrap" id="tdRunningTime">
+                                Hạn Đăng Kiểm
+                            </td>
+                            <td nowrap="nowrap" id="tdDrivingTime"> Số Ng&#224;y C&#242;n Lại </td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="vehicle-overtime-driving-info" style="display: none">
+        <span class="header">L&#225;i xe li&#234;n tục(4H)  (<span class="counter"></span>)</span>
+        <div id="VehiclesOverTimeDriving">
+            <div class="vehicle-overtime-driving-list">
+                <table class="vehicles-overtime-driving">
+                    <thead>
+                        <tr class="title">
+                            <td nowrap="nowrap" id="tdConfig"></td>
+                            <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                            <td nowrap="nowrap" id="tdDrivingTime">Ng&#224;y/Giờ</td>
+                            <td nowrap="nowrap" id="tdRunningTime">~</td>
+                            <td nowrap="nowrap" id="tdAtAddress">Địa Chỉ</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="vehicle-daily-driving-info" style="display: none">
+        <span class="header">L&#225;i xe trong ng&#224;y(10H)  (<span class="counter"></span>)</span>
+        <div id="VehiclesDailyDriving">
+            <div class="vehicle-daily-driving-list">
+                <table class="vehicles-daily-driving">
+                    <thead>
+                        <tr class="title">
+                            <td nowrap="nowrap" id="tdConfig"></td>
+                            <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                            <td nowrap="nowrap" id="tdDailyFromTime">Ng&#224;y/Giờ</td>
+                            <td nowrap="nowrap" id="tdDailyRunningTime">~</td>
+                            <td nowrap="nowrap" id="tdAtAddress">Địa Chỉ</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Display driving 10H info -->
+    <div class="vehicle-weekly-driving-info" style="display: none">
+        <span class="header">L&#225;i xe trong tuần(48H)  (<span class="counter"></span>)</span>
+        <div id="VehiclesWeeklyDriving">
+            <div class="vehicle-weekly-driving-list">
+                <table class="vehicles-weekly-driving">
+                    <thead>
+                        <tr class="title">
+                            <td nowrap="nowrap" id="tdConfig"></td>
+                            <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                            <td nowrap="nowrap" id="tdFromTime">Ng&#224;y/Giờ</td>
+                            <td nowrap="nowrap" id="tdRunningTime">~</td>
+                            <td nowrap="nowrap" id="tdAtAddress">Địa Chỉ</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Display highway speed info -->
+    <div class="vehicle-highway-speed-info" style="display: none">
+        <span class="header">Tốc độ chậm tr&#234;n cao tốc  (<span class="counter"></span>)</span>
+        <div id="VehiclesHighwaySpeed">
+            <div class="vehicle-highway-speed-list">
+                <table class="vehicles-highway-speed">
+                    <thead>
+                        <tr class="title">
+                            <td nowrap="nowrap" id="tdConfig"></td>
+                            <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                            <td nowrap="nowrap" id="tdAtTime">Ng&#224;y/Giờ</td>
+                            <td nowrap="nowrap" id="tdSpeed">Km/h</td>
+                            <td nowrap="nowrap" id="tdMax">MAX</td>
+                            <td nowrap="nowrap" id="tdAtAddress">Địa Chỉ</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="station-info" style="display: none">
+        <span class="control-center-button state-expand" onclick=" toggleStationListCommands(); "></span>
+        <span class="header">
+            Danh s&#225;ch điểm&nbsp;&nbsp;<a style="color: white;" target="_blank" href="/Map.aspx/Point" title="Quản L&#253;"><i class="icon-new-window"></i></a>
+        </span>
+        <div id="stationTable">
+            <input id="searchStation" type="text" class="search" placeholder="T&#236;m Kiếm" />
+            <div class="station-list">
+                <table id="station-table" class="stations" style="width: 100%;"></table>
+                <img id="station-loading" src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" height="100" />
+            </div>
+        </div>
+    </div>
+    <div class="geofence-info" style="display:none">
+        <span class="control-center-button state-expand" onclick=" toggleGeofenceListCommands(); "></span>
+        <span class="header">Danh s&#225;ch v&#249;ng/đường&nbsp;&nbsp;<a style="color: white;" target="_blank" href="/Map.aspx/Geofence" title="Quản L&#253;"><i class="icon-new-window"></i></a></span>
+        <div id="geofenceTable">
+            <input id="searchGeofence" type="text" class="search" placeholder="T&#236;m Kiếm" />
+            <div class="geofence-list">
+                <table id="geofence-table" class="geofences" style="width:100%;"></table>
+                <img id="geofence-loading" src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" height="100" />
+            </div>
+        </div>
+    </div>
+    <div class="pn-guide">
+            <span>
+                <span style="display: block; cursor: pointer; color: black; background: #ffc107">
+                    <div title="Thời Gian L&#225;i Xe" onclick="openTableDrivingTime();">
+                        <i class="fal fa-tire-flat" style="font-size: large;"></i>
+                        <span> Thời Gian L&#225;i Xe </span>
+                    </div>
+                </span>
+            </span>
+        <div id="power-guide"><span class="title">Trạng Th&#225;i Nguồn:&nbsp;</span><span class="power-status-on"></span>&nbsp;<span id="VehiclePowerOnStatus" onclick="changeVehiclePowerOnStatus()">Mở(<span id="VehiclePowerOnCounter">0</span>)</span>&nbsp;<span class="airconditioner-status-off"></span>&nbsp;<span id="VehiclePowerOffStatus" onclick="changeVehiclePowerOffStatus()">Tắt(<span id="VehiclePowerOffCounter">0</span>)</span><span class="clear"></span></div>
+        <div id="door-guide"><span class="title">Trạng Th&#225;i Cửa:&nbsp;</span><span class="door-status-open"></span>&nbsp;<span id="VehicleDoorOpenStatus" onclick="changeVehicleDoorOpenStatus();">Mở(<span id="VehicleDoorOpenCounter">0</span>)</span>&nbsp;<span class="door-status-close"></span>&nbsp;<span id="VehicleDoorCloseStatus" onclick="changeVehicleDoorCloseStatus();">Đ&#243;ng(<span id="VehicleDoorCloseCounter">0</span>)</span><span class="clear"></span></div>
+        <div id="airconditioner-guide"><span class="title">Trạng Th&#225;i M&#225;y Lạnh:&nbsp;</span><span class="airconditioner-status-on"></span>&nbsp;<span id="VehicleAirConditionerOnStatus" onclick="changeVehicleAirConditionerOnStatus()">Mở(<span id="VehicleAirConditionerOnCounter">0</span>)</span>&nbsp;<span class="airconditioner-status-off"></span>&nbsp;<span id="VehicleAirConditionerOffStatus" onclick="changeVehicleAirConditionerOffStatus()">Tắt(<span id="VehicleAirConditionerOffCounter">0</span>)</span><span class="clear"></span></div>
+        <div id="collision-guide"><span class="title">Cảnh B&#225;o Va Chạm:&nbsp;</span><span class="collision-status-on"></span>&nbsp;<span id="VehicleCollisionOnStatus" onclick="changeVehicleCollisionOnStatus()">C&#243; Vật Cản(<span id="VehicleCollisionOnCounter">0</span>)</span>&nbsp;<span class="collision-status-off"></span>&nbsp;<span id="VehicleCollisionOffStatus" onclick="changeVehicleCollisionOffStatus()">Kh&#244;ng C&#243; Vật Cản(<span id="VehicleCollisionOffCounter">0</span>)</span><span class="clear"></span></div>
+        <div id="mixing-guide"><span class="title">Trạng Th&#225;i Bồn Trộn:&nbsp;</span><span class="mixing-status-normal"></span>&nbsp;<span id="VehicleMixingNormalStatus" onclick="changeVehicleMixingNormalStatus()">B&#236;nh Thường(<span id="VehicleMixingNormalCounter">0</span>)</span>&nbsp;<span class="mixing-status-mix"></span>&nbsp;<span id="VehicleMixingMixStatus" onclick="changeVehicleMixingMixStatus()">Trộn(<span id="VehicleMixingMixCounter">0</span>)</span><span class="clear"></span>&nbsp;<span class="mixing-status-discharge"></span>&nbsp;<span id="VehicleMixingDischargeStatus" onclick="changeVehicleMixingDischargeStatus()">Xả(<span id="VehicleMixingDischargeCounter">0</span>)</span><span class="clear"></span></div>
+    </div>
+    <div id="road-speed">
+        <span id="vehicle-speed-value" title="Tốc Độ(km/h)">0</span> km/h
+        <span id="road-speed-value" title="Tốc Độ Tối Đa(km/h)">0</span>
+        <span id="road-name"></span>
+    </div>
+
+    <div class="video-panel" style="display:none">
+        <div id="loading" style="background-color: rgba(255,255,255,0.7); height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 9999;display:none">
+            <div style="font-size: 20pt; height: 22px; margin: 200px;" align="center">
+                Đang tải camera<br />
+                <img src="https://cdn.quanlyxe.vn/v2/Content/images/ajax-loader.gif" /><br />
+            </div>
+        </div>
+        <div style="height:100%;padding:20px 10px 10px 20px">
+            <div id="error" style="background-color: rgba(0, 0, 0, 0.14);height: 100%;left: 0px;position: absolute;top: 0;width: 100%;z-index: 9999;user-select:none;display:none">
+                <div style="font-size: large;color: red;vertical-align: middle;position: relative;position: absolute;top: 40%;left: 50%;transform: translate(-50%, -50%);background-color: white;padding: 5px 10px;" align="center">
+                    Xe chưa được cấu h&#236;nh xem video
+                </div>
+            </div>
+            <iframe id="video_mdvr" width="100%" height="100%" name="camera" allow="fullscreen"></iframe>
+        </div>
+    </div>
+    <div class="mdvr-photo-info" style="display: none">
+        <span class="control-center-button state-expand" onclick=" toggleMdvrPhotoCommands(); "></span>
+        <span class="header">
+            Xem hình ảnh&nbsp;&nbsp;
+        </span>
+        <div id="mdvrPhotoTable" class="mdvr-photo-list">
+            <table style="width: 100%" class="mdvr-image">
+                <tr>
+                    <td>
+                        Xe:
+                    </td>
+                    <td colspan="4">
+                        <select id="selectVehicleMdvr" style="width: 80%" class="form-control"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Từ:</td>
+                    <td>
+                        <input id="txtMdvrFromDate" type="text" class="date-picker" value="2025-08-14" /><input id="txtMdvrFromTime" type="text" class="time-picker" value="00:00" />
+                    </td>
+                    <td>Đến:</td>
+                    <td>
+                        <input id="txtMdvrToDate" type="text" class="date-picker" value="2025-08-14" /><input id="txtMdvrToTime" type="text" class="time-picker" value="23:59" />
+                    </td>
+                    <td>
+                        <a type="button" onclick="loadMdvrPhoto();" class="btn btn-primary">Tải</a>
+                    </td>
+                </tr>
+            </table>
+            <div class="mdvr-photos">
+                <div class="loadPhoto" style="display: none"><img id="mdvr-photo-loading" src="https://cdn.quanlyxe.vn/v2/Content/images/report-loading.gif" height="32"></div>
+                <div class="photos"></div>
+            </div>
+            <button class="prev btn btn-primary" style="display: none;" onclick="loadMdvrPhoto(-1);"><icon class="fa fa-angle-left"></icon></button>
+            <button class="next btn btn-primary" style="display: none;" onclick="loadMdvrPhoto(1);"><icon class="fa fa-angle-right"></icon></button>
+        </div>
+    </div>
+    <div id="vehicle-billing-expired" style="display: none;">
+        <table id="vehicle-billing-expired-table">
+            <tr>
+                <td colspan="2">
+                    <h2 style="text-align: center; color: red;">
+                        THÔNG BÁO XE HẾT HẠN DỊCH VỤ
+                    </h2>
+                    <span>
+                        <i id="vehicle-billing-expired-close" class="fa fa-times-circle" onclick="removeVehicleBillingExpiredPopup();"></i>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    Vietmap xin trân trọng thông báo đến Qúy khách hàng: Phí dịch vụ quản lý xe của Qúy khách đã đến hạn.
+                    Để được gia hạn dịch vụ, Quý khách vui lòng liên hệ tổng đài chăm sóc khách hàng: <a href="tel:1900 633 378"><b>1900 633 378</b></a>.
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    Danh sách xe chi tiết như sau:
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="max-height: 250px; overflow: auto;">
+                        <table id="vehicle-list" class="table table-bordered table-striped">
+                            <tr>
+                                <th></th>
+                                <th>Biển Số Xe</th>
+                                <th>Ngày Kích Hoạt</th>
+                                <th>Hạn Dịch Vụ</th>
+                                <th></th>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <b>
+                        Thông tin tài khoản:
+                    </b>
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    <b>Công Ty TNHH Ứng Dụng Bản Đồ Việt</b><br />
+                    Số tài khoản: <b>060060033598</b><br />
+                    Tại Ngân hàng Sacombank, Chi nhánh TP.HCM.
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="mifi-status" style="display:none">
+        <table>
+            <tr>
+                <td>Status</td>
+                <td style="width: 2px; background-color: white; padding: 0;"></td>
+                <td>Today</td>
+                <td style="width: 2px; background-color: white; padding: 0;"></td>
+                <td>This Month</td>
+            </tr>
+            <tr>
+                <td><span id="mini-status-onoff"></span></td>
+                <td style="width: 2px; background-color: white; padding: 0;"></td>
+                <td><span id="mini-status-day">0</span></td>
+                <td style="width: 2px; background-color: white; padding: 0;"></td>
+                <td><span id="mini-status-month">0</span></td>
+            </tr>
+        </table>
+    </div>
+    <!-- Display vehicle traffic violation -->
+    <div class="vehicle-traffic-violation-info" style="display: none">
+        <span class="header">Vi phạm phạt nguội (<span class="counter"></span>)
+            <a href="/VehicleReport.aspx/TrafficCamera" target="_blank" style="float: right; color: white;">
+                <i class="fa fa-external-link" aria-hidden="true"></i>
+            </a>
+        </span>
+        <div id="VehiclesTrafficViolationTable">
+            <div class="vehicle-traffic-violation-list">
+                <table class="vehicles-traffic-violation">
+                    <thead>
+                    <tr class="title">
+                        <td nowrap="nowrap" id="tdConfig"></td>
+                        <td nowrap="nowrap" id="tdPlate">Biển Kiểm So&#225;t</td>
+                        <td nowrap="nowrap" id="tdViolationCount">Số lượng vi phạm</td>
+                        <td nowrap="nowrap" id="tdCheckTime">Thời gian kiểm tra</td>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="updateInspectionDateModal" tabindex="-1" aria-labelledby="updateInspectionDateLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="updateRegisterVehicleForm">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="updateInspectionDateLabel"> 
+                        <b>
+                            Cập nhật hạn đăng kiểm
+                        </b>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div style="margin-bottom: 8px">
+                        <b class="modal-title">Biển Kiểm So&#225;t - <span id="plateInspect"> </span> </b>
+                    </div>
+                    <input type="hidden" id="vehicleId" name="VehicleId" />
+                    <div class="mb-3">
+                        <label for="registerDate" class="form-label">Ng&#224;y Đăng Kiểm Lần Cuối</label>
+                        <input type="text" id="registerDate" name="RegisterDate" class="form-control datepicker" autocomplete="off" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="nextRegisterDate" class="form-label">Hạn Đăng Kiểm</label>
+                        <input type="text" id="nextRegisterDate" name="NextRegisterDate" class="form-control datepicker" autocomplete="off" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="btnUpdateRegisterDate">Cập Nhật</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đ&#243;ng</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    </div>
+</body>
+</html>
