@@ -1,5 +1,5 @@
-const { Builder, By, Key, until } = require("selenium-webdriver");
-const firefox = require("selenium-webdriver/firefox");
+import { Builder, By, Key, until } from "selenium-webdriver";
+import firefox from "selenium-webdriver/firefox.js";
 
 async function run_vietmap(car) {
   // Cấu hình Firefox
@@ -35,10 +35,10 @@ async function run_vietmap(car) {
 
     let current_car = car;
     let vietmap = {
-      "29ld31538": "210002",
-      "29h95648": "180285",
-      "29ld31356": "212968",
-      "29ld31377": "231347",
+      "29LD31538": "210002",
+      "29H95648": "180285",
+      "29LD31356": "212968",
+      "29LD31377": "231347",
     };
 
     let current_car_id = vietmap[current_car];
@@ -49,6 +49,7 @@ async function run_vietmap(car) {
       10000
     );
     await driver.executeScript("arguments[0].click();", row);
+    console.log("✅ Đã click vào xe, đang chờ popup...");
 
     // Chờ popup xuất hiện
     let popup = await driver.wait(
@@ -57,12 +58,28 @@ async function run_vietmap(car) {
           ".ol-popup.default.ol-popup-bottom.ol-popup-center.hasclosebox.shadow.visible"
         )
       ),
-      10000
+      15000
     );
+    console.log("✅ Popup đã xuất hiện");
+    
+    // Đợi thêm để popup hoàn toàn load xong và ổn định vị trí
+    await driver.sleep(2000);
+    
+    // Đợi cho đến khi popup có nội dung và không còn thay đổi
+    await driver.wait(async () => {
+        try {
+            const content = await popup.getText();
+            return content && content.length > 0;
+        } catch {
+            return false;
+        }
+    }, 5000);
+    
+    console.log("✅ Popup đã load hoàn toàn");
 
     // Chụp ảnh popup
     await popup.takeScreenshot().then(function (image, err) {
-      require("fs").writeFileSync("Bao_cao_xe.png", image, "base64");
+      import("fs").then(fs => fs.writeFileSync("Bao_cao_xe.png", image, "base64"));
     });
     console.log("✅ Đã lưu ảnh popup thành Bao_cao_xe.png");
   } catch (err) {
@@ -71,4 +88,5 @@ async function run_vietmap(car) {
     await driver.quit();
   }
 }
-module.exports.run_vietmap = run_vietmap;
+
+export { run_vietmap };

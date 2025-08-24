@@ -1,5 +1,6 @@
 import { Zalo, ThreadType } from "zca-js";
 import { run_vietmap } from "./vietmap.js";
+import { run_binhanh } from "./binhanh.js";
 import path from "path";
 import { Builder, By, Key, until } from "selenium-webdriver";
 import firefox from "selenium-webdriver/firefox.js";
@@ -8,10 +9,20 @@ import fs from "node:fs/promises";
 // biến
 const WARN_FILE = path.resolve("./warn_records.json");
 const vietmap = {
-  "29ld31538": "210002",
-  "29h95648": "180285",
-  "29ld31356": "212968",
-  "29ld31377": "231347",
+  "29LD31538": "210002",
+  "29H95648": "180285",
+  "29LD31356": "212968",
+  "29LD31377": "231347",
+};
+
+// Object chứa thông tin biển số từ danh_sach_xe.json
+const binhanh = {
+  "29H76446": "487452",
+  "29H76366": "485798",
+  "29H76494": "487423",
+  "29LD31574": "476945",
+  "29H76466": "489205",
+  "29E15073": "633109"
 };
 // const zalo_id = {
 //   "29ld31538": "2370540463748680495",
@@ -27,17 +38,17 @@ const vietmap = {
 //   "29e15073": "2846795138633328715",
 // };
 const zalo_id = {
-  "29ld31538": "8742505709139289241",
-  "29h95648": "8742505709139289241",
-  "29ld31356": "8742505709139289241",
-  "29ld31377": "8742505709139289241",
-  "29h76446": "8742505709139289241",
-  "29h76366": "8742505709139289241",
-  "29h76494": "8742505709139289241",
-  "29ld31574": "8742505709139289241",
-  "29e38191": "8742505709139289241",
-  "29h76466": "8742505709139289241",
-  "29e15073": "8742505709139289241",
+  "29LD31538": "8742505709139289241",
+  "29H95648": "8742505709139289241",
+  "29LD31356": "8742505709139289241",
+  "29LD31377": "8742505709139289241",
+  "29H76446": "8742505709139289241",
+  "29H76366": "8742505709139289241",
+  "29H76494": "8742505709139289241",
+  "29LD31574": "8742505709139289241",
+  "29E38191": "8742505709139289241",
+  "29H76466": "8742505709139289241",
+  "29E15073": "8742505709139289241",
 };
 //  hàm lấy ngày trong tuần
 function getWeekNumber(date) {
@@ -523,7 +534,8 @@ async function check_time_vietmap(api) {
 async function startSimpleAutoReply() {
   const zalo = new Zalo();
   const api = await zalo.loginQR();
-  const regex = /\bthông tin xe\s+([0-9A-Za-z]+)\b/i;
+  // Regex linh hoạt hơn để nhận diện biển số xe
+  const regex = /\bthông\s*tin\s*xe\s+([0-9A-Za-z]+)\b/i;
   // check time trước 1 lần
   await check_time_vietmap(api);
   // Sau đó cứ 10 phút chạy lại
@@ -538,21 +550,66 @@ async function startSimpleAutoReply() {
       message.data.content.includes("thông tin xe")
     ) {
       const current_car = message.data.content.match(regex);
-      if (vietmap.hasOwnProperty(current_car[1])) {
-        console.log("Đã tìm thấy biển số xe:", current_car[1]);
-        console.log("Với ID biển số xe:", vietmap[current_car[1]]);
-        await run_vietmap(current_car[1]);
-        await api
-          .sendMessage(
-            {
-              msg: "",
-              attachments: [path.resolve("./Bao_cao_xe.png")],
-            },
+      if (current_car && current_car[1]) {
+        const originalPlate = current_car[1];
+        const plate = originalPlate.toUpperCase(); // Chuẩn hóa về chữ hoa
+        
+        console.log(`📋 Biển số xe từ tin nhắn: "${originalPlate}" → Chuẩn hóa: "${plate}"`);
+        
+        // Kiểm tra biển số xe có hợp lệ không (ít nhất 5 ký tự)
+        if (plate.length < 5) {
+          console.log(`⚠️ Biển số xe quá ngắn: "${plate}"`);
+          await api.sendMessage(
+            { msg: `Biển số xe "${plate}" không hợp lệ. Vui lòng kiểm tra lại.` },
             message.threadId,
             message.type
-          )
-          .then(console.log)
-          .catch(console.error);
+          );
+          return;
+        }
+        
+        // Kiểm tra biển số xe thuộc binhanh hay vietmap
+        if (binhanh.hasOwnProperty(plate)) {
+          console.log("Đã tìm thấy biển số xe trong binhanh:", plate);
+          console.log("Với ID biển số xe:", binhanh[plate]);
+          await run_binhanh(plate);
+          await api
+            .sendMessage(
+              {
+                msg: "",
+                attachments: [path.resolve("./Bao_cao_xe.png")],
+              },
+              message.threadId,
+              message.type
+            )
+            .then(console.log)
+            .catch(console.error);
+        } else if (vietmap.hasOwnProperty(plate)) {
+          console.log("Đã tìm thấy biển số xe trong vietmap:", plate);
+          console.log("Với ID biển số xe:", vietmap[plate]);
+          await run_vietmap(plate);
+          await api
+            .sendMessage(
+              {
+                msg: "",
+                attachments: [path.resolve("./Bao_cao_xe.png")],
+              },
+              message.threadId,
+              message.type
+            )
+            .then(console.log)
+            .catch(console.error);
+        } else {
+          console.log(`❌ Không tìm thấy biển số xe: "${plate}"`);
+          console.log(`📋 Các biển số có sẵn trong hệ thống:`);
+          console.log(`   • Binhanh: ${Object.keys(binhanh).join(', ')}`);
+          console.log(`   • Vietmap: ${Object.keys(vietmap).join(', ')}`);
+          
+          await api.sendMessage(
+            { msg: `Không tìm thấy thông tin cho biển số xe ${plate}. Vui lòng kiểm tra lại hoặc liên hệ admin.` },
+            message.threadId,
+            message.type
+          );
+        }
       }
     } else if (
       message.type === ThreadType.User &&
