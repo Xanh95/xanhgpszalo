@@ -24,32 +24,32 @@ const binhanh = {
   "29H76466": "489205",
   "29E15073": "633109",
 };
-// const zalo_id = {
-//   "29ld31538": "2370540463748680495",
-//   "29h95648": "2015333738208895549",
-//   "29ld31356": "1802702973168669646",
-//   "29ld31377": "1907412626625801394",
-//   "29h76446": "1244389568543071118",
-//   "29h76366": "3061263053099966385",
-//   "29h76494": "7160192846130148244",
-//   "29ld31574": "1086903675994133727",
-//   "29e38191": "3709510548480395184",
-//   "29h76466": "8687757462246139739",
-//   "29e15073": "2846795138633328715",
-// };
 const zalo_id = {
-  "29LD31538": "8742505709139289241",
-  "29H95648": "8742505709139289241",
-  "29LD31356": "8742505709139289241",
-  "29LD31377": "8742505709139289241",
-  "29H76446": "8742505709139289241",
-  "29H76366": "8742505709139289241",
-  "29H76494": "8742505709139289241",
-  "29LD31574": "8742505709139289241",
-  "29E38191": "8742505709139289241",
-  "29H76466": "8742505709139289241",
-  "29E15073": "8742505709139289241",
+  "29ld31538": "2370540463748680495",
+  "29h95648": "2015333738208895549",
+  "29ld31356": "1802702973168669646",
+  "29ld31377": "1907412626625801394",
+  "29h76446": "1244389568543071118",
+  "29h76366": "3061263053099966385",
+  "29h76494": "7160192846130148244",
+  "29ld31574": "1086903675994133727",
+  "29e38191": "3709510548480395184",
+  "29h76466": "8687757462246139739",
+  "29e15073": "2846795138633328715",
 };
+// const zalo_id = {
+//   "29LD31538": "8742505709139289241",
+//   "29H95648": "8742505709139289241",
+//   "29LD31356": "8742505709139289241",
+//   "29LD31377": "8742505709139289241",
+//   "29H76446": "8742505709139289241",
+//   "29H76366": "8742505709139289241",
+//   "29H76494": "8742505709139289241",
+//   "29LD31574": "8742505709139289241",
+//   "29E38191": "8742505709139289241",
+//   "29H76466": "8742505709139289241",
+//   "29E15073": "8742505709139289241",
+// };
 //  hàm lấy ngày trong tuần
 function getWeekNumber(date) {
   // Clone date để tránh thay đổi object gốc
@@ -575,6 +575,29 @@ async function check_time_binhanh(api) {
     }, 10000);
 
     console.log("✅ Trang đã load xong, tiếp tục...");
+    await driver.sleep(4000);
+    // Đợi thêm để popup load hoàn toàn
+    await driver.sleep(2000);
+    // Kiểm tra xem element có tồn tại trước khi click
+    let closeBtn;
+    try {
+      closeBtn = await driver.wait(
+        until.elementLocated(
+          By.css("a.layui-layer-ico.layui-layer-close.layui-layer-close1")
+        ),
+        15000
+      );
+
+      // Nếu tìm thấy element, thực hiện click
+      if (closeBtn) {
+        await driver.executeScript(
+          "document.querySelector('a.layui-layer-ico.layui-layer-close.layui-layer-close1').click();"
+        );
+        console.log("✅ Đã click nút đóng popup");
+      }
+    } catch (err) {
+      console.log("⚠️ Không tìm thấy nút đóng popup, bỏ qua bước này.");
+    }
     // vòng lặp kiểm tra từng xe binh anh
     // Lấy thông tin status. Chờ đến khi window.statuses["vec_xxx"] có giá trị
     // bước 1 + bước 2: tạo instance nếu chưa có
@@ -993,6 +1016,7 @@ async function startSimpleAutoReply() {
     if (
       message.type === ThreadType.User &&
       !message.isSelf &&
+      typeof message.data.content === "string" && // Kiểm tra content là chuỗi
       message.data.content.includes("thông tin xe")
     ) {
       const current_car = message.data.content.match(regex);
@@ -1025,7 +1049,7 @@ async function startSimpleAutoReply() {
           await api
             .sendMessage(
               {
-                msg: "",
+                msg: `Thời gian kiểm tra: ${new Date().toLocaleString()}`,
                 attachments: [path.resolve("./Bao_cao_xe.png")],
               },
               message.threadId,
@@ -1040,7 +1064,7 @@ async function startSimpleAutoReply() {
           await api
             .sendMessage(
               {
-                msg: "",
+                msg: `Thời gian kiểm tra: ${new Date().toLocaleString()}`,
                 attachments: [path.resolve("./Bao_cao_xe.png")],
               },
               message.threadId,
@@ -1063,11 +1087,7 @@ async function startSimpleAutoReply() {
           );
         }
       }
-    } else if (
-      message.type === ThreadType.User &&
-      !message.isSelf &&
-      typeof message.data.content === "string"
-    ) {
+    } else if (message.type === ThreadType.User) {
       const {
         threadId,
         data: { content },
@@ -1088,7 +1108,8 @@ async function startSimpleAutoReply() {
           threadId,
           message.type
         );
-      }, 5 * 60 * 1000); // đợi 5 phút rồi gửi
+      }, 2 * 60 * 1000); // đợi 2 phút rồi gửi
+      console.log("📩 đã phản hồi tin nhắn");
     }
   });
 

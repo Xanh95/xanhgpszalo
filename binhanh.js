@@ -4,7 +4,7 @@ import firefox from "selenium-webdriver/firefox.js";
 async function run_binhanh(car) {
   // Cấu hình Firefox
   let options = new firefox.Options();
-  // options.addArguments("--headless"); // Bỏ comment nếu muốn chạy ẩn
+  options.addArguments("--headless"); // Bỏ comment nếu muốn chạy ẩn
 
   let driver = await new Builder()
     .forBrowser("firefox")
@@ -45,6 +45,26 @@ async function run_binhanh(car) {
     // Đợi thêm để popup load hoàn toàn
     await driver.sleep(1000);
     console.log("✅ Trang đã load xong, tiếp tục...");
+    // Kiểm tra xem element có tồn tại trước khi click
+    let closeBtn;
+    try {
+      closeBtn = await driver.wait(
+        until.elementLocated(
+          By.css("a.layui-layer-ico.layui-layer-close.layui-layer-close1")
+        ),
+        15000
+      );
+
+      // Nếu tìm thấy element, thực hiện click
+      if (closeBtn) {
+        await driver.executeScript(
+          "document.querySelector('a.layui-layer-ico.layui-layer-close.layui-layer-close1').click();"
+        );
+        console.log("✅ Đã click nút đóng popup");
+      }
+    } catch (err) {
+      console.log("⚠️ Không tìm thấy nút đóng popup, bỏ qua bước này.");
+    }
 
     let current_car = car;
     let binhanh = {
